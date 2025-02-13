@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -69,7 +69,7 @@
 #include "qt/utils.h"
 #include "qt/TailsOS.h"
 #include "qt/KeysFiles.h"
-#include "qt/MoneroSettings.h"
+#include "qt/MyNewCoinSettings.h"
 #include "qt/NetworkAccessBlockingFactory.h"
 #ifdef Q_OS_MAC
 #include "qt/macoshelper.h"
@@ -237,7 +237,7 @@ int main(int argc, char *argv[])
     // - Log file location
     // - QML Settings file location (monero-core.conf)
     // - Default wallets path
-    // Target directory is: ~/Persistent/Monero
+    // Target directory is: ~/Persistent/MyNewCoin
     if (isTails) {
         if (!TailsOS::detectDataPersistence())
             TailsOS::showDataPersistenceDisabledWarning();
@@ -253,9 +253,9 @@ int main(int argc, char *argv[])
     #endif
 
     if(isTails && TailsOS::usePersistence){
-        moneroAccountsDir = QDir::homePath() + "/Persistent/Monero/wallets";
+        moneroAccountsDir = QDir::homePath() + "/Persistent/MyNewCoin/wallets";
     } else if (!moneroAccountsRootDir.empty()) {
-        moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Monero/wallets";
+        moneroAccountsDir = moneroAccountsRootDir.at(0) + "/MyNewCoin/wallets";
     } else {
         qCritical() << "Error: accounts root directory could not be set";
         return 1;
@@ -293,7 +293,7 @@ Verify update binary using 'shasum'-compatible (SHA256 algo) output signed by tw
     parser.addHelpOption();
     parser.process(app);
 
-    Monero::Utils::onStartup();
+    MyNewCoin::Utils::onStartup();
 
     Logger logger(app, parser.value(logPathOption));
 
@@ -301,8 +301,8 @@ Verify update binary using 'shasum'-compatible (SHA256 algo) output signed by tw
     // qWarning is not shown here unless MONERO_LOG_LEVEL env var is set
     bool logLevelOk;
     int logLevel = qEnvironmentVariableIntValue("MONERO_LOG_LEVEL", &logLevelOk);
-    if (logLevelOk && logLevel >= 0 && logLevel <= Monero::WalletManagerFactory::LogLevel_Max){
-        Monero::WalletManagerFactory::setLogLevel(logLevel);
+    if (logLevelOk && logLevel >= 0 && logLevel <= MyNewCoin::WalletManagerFactory::LogLevel_Max){
+        MyNewCoin::WalletManagerFactory::setLogLevel(logLevel);
     }
 
     if (parser.isSet(verifyUpdateOption))
@@ -384,7 +384,7 @@ Verify update binary using 'shasum'-compatible (SHA256 algo) output signed by tw
     qmlRegisterType<WalletManager>("moneroComponents.WalletManager", 1, 0, "WalletManager");
 
     // Temporary Qt.labs.settings replacement
-    qmlRegisterType<MoneroSettings>("moneroComponents.Settings", 1, 0, "MoneroSettings");
+    qmlRegisterType<MyNewCoinSettings>("moneroComponents.Settings", 1, 0, "MyNewCoinSettings");
 
     qmlRegisterUncreatableType<Wallet>("moneroComponents.Wallet", 1, 0, "Wallet", "Wallet can't be instantiated directly");
 

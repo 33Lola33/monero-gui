@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -37,7 +37,7 @@ import moneroComponents.Wallet 1.0
 import moneroComponents.NetworkType 1.0
 import FontAwesome 1.0
 import "../components"
-import "../components" as MoneroComponents
+import "../components" as MyNewCoinComponents
 import "." 1.0
 import "../js/TxUtils.js" as TxUtils
 import "../js/Utils.js" as Utils
@@ -154,7 +154,7 @@ Rectangle {
       RowLayout {
           visible: root.warningContent !== ""
 
-          MoneroComponents.WarningBox {
+          MyNewCoinComponents.WarningBox {
               text: warningContent
               onLinkActivated: {
                   appWindow.startDaemon(appWindow.persistentSettings.daemonFlags);
@@ -165,8 +165,8 @@ Rectangle {
       RowLayout {
           visible: leftPanel.minutesToUnlock !== ""
 
-          MoneroComponents.WarningBox {
-              text: qsTr("Spendable funds: %1 XMR. Please wait ~%2 minutes for your whole balance to become spendable.").arg(leftPanel.balanceUnlockedString).arg(leftPanel.minutesToUnlock)
+          MyNewCoinComponents.WarningBox {
+              text: qsTr("Spendable funds: %1 MNC. Please wait ~%2 minutes for your whole balance to become spendable.").arg(leftPanel.balanceUnlockedString).arg(leftPanel.minutesToUnlock)
           }
       }
 
@@ -264,14 +264,14 @@ Rectangle {
                         spacing: 6
                         Layout.fillWidth: true
 
-                        MoneroComponents.TextPlain {
-                            font.family: MoneroComponents.Style.fontRegular.name
+                        MyNewCoinComponents.TextPlain {
+                            font.family: MyNewCoinComponents.Style.fontRegular.name
                             font.pixelSize: 16
-                            color: MoneroComponents.Style.defaultFontColor
+                            color: MyNewCoinComponents.Style.defaultFontColor
                             text: qsTr("Address") + translationManager.emptyString
                         }
 
-                        MoneroComponents.InlineButton {
+                        MyNewCoinComponents.InlineButton {
                             fontFamily: FontAwesome.fontFamilySolid
                             fontStyleName: "Solid"
                             fontPixelSize: 18
@@ -293,7 +293,7 @@ Rectangle {
                             }
                         }
 
-                        MoneroComponents.InlineButton {
+                        MyNewCoinComponents.InlineButton {
                             fontFamily: FontAwesome.fontFamilySolid
                             fontStyleName: "Solid"
                             text: FontAwesome.qrcode
@@ -305,7 +305,7 @@ Rectangle {
                             }
                         }
 
-                        MoneroComponents.InlineButton {
+                        MyNewCoinComponents.InlineButton {
                             fontFamily: FontAwesome.fontFamily
                             text: FontAwesome.addressBook
                             tooltip: qsTr("Import from address book") + translationManager.emptyString
@@ -326,14 +326,14 @@ Rectangle {
                         Layout.preferredWidth: 125
                         Layout.maximumWidth: recipientLayout.secondRowWidth
 
-                        MoneroComponents.TextPlain {
-                            font.family: MoneroComponents.Style.fontRegular.name
+                        MyNewCoinComponents.TextPlain {
+                            font.family: MyNewCoinComponents.Style.fontRegular.name
                             font.pixelSize: 16
-                            color: MoneroComponents.Style.defaultFontColor
+                            color: MyNewCoinComponents.Style.defaultFontColor
                             text: qsTr("Amount") + translationManager.emptyString
                         }
 
-                        MoneroComponents.InlineButton {
+                        MyNewCoinComponents.InlineButton {
                             fontFamily: FontAwesome.fontFamilySolid
                             fontStyleName: "Solid"
                             fontPixelSize: 16
@@ -365,7 +365,7 @@ Rectangle {
                             Layout.topMargin: -1
                             Layout.leftMargin: 1
                             Layout.rightMargin: recipientLayout.thirdRowWidth + 1
-                            color: MoneroComponents.Style.inputBorderColorInActive
+                            color: MyNewCoinComponents.Style.inputBorderColorInActive
                             height: 1
                             visible: index > 0
                         }
@@ -373,7 +373,7 @@ Rectangle {
                         RowLayout {
                             spacing: 0
 
-                            MoneroComponents.LineEditMulti {
+                            MyNewCoinComponents.LineEditMulti {
                                 KeyNavigation.backtab: index > 0 ? recipientRepeater.itemAt(index - 1).children[1].children[2] : sendButton
                                 KeyNavigation.tab: parent.children[2]
                                 Layout.alignment: Qt.AlignVCenter
@@ -382,13 +382,13 @@ Rectangle {
                                 Layout.fillWidth: true
                                 addressValidation: true
                                 borderDisabled: true
-                                fontColor: error && text != "" ? MoneroComponents.Style.errorColor : MoneroComponents.Style.defaultFontColor
-                                fontFamily: MoneroComponents.Style.fontMonoRegular.name
+                                fontColor: error && text != "" ? MyNewCoinComponents.Style.errorColor : MyNewCoinComponents.Style.defaultFontColor
+                                fontFamily: MyNewCoinComponents.Style.fontMonoRegular.name
                                 fontSize: 14
                                 inputPaddingBottom: 0
                                 inputPaddingTop: 0
                                 inputPaddingRight: 0
-                                placeholderFontFamily: MoneroComponents.Style.fontMonoRegular.name
+                                placeholderFontFamily: MyNewCoinComponents.Style.fontMonoRegular.name
                                 placeholderFontSize: 14
                                 spacing: 0
                                 wrapMode: Text.WrapAnywhere
@@ -410,7 +410,7 @@ Rectangle {
                                 }
                                 text: address
 
-                                MoneroComponents.InlineButton {
+                                MyNewCoinComponents.InlineButton {
                                     small: true
                                     text: qsTr("Resolve") + translationManager.emptyString
                                     visible: TxUtils.isValidOpenAliasAddress(address)
@@ -438,11 +438,11 @@ Rectangle {
                                 Layout.bottomMargin: 1
                                 Layout.leftMargin: recipientLayout.colSpacing / 2 - width
                                 Layout.rightMargin: recipientLayout.colSpacing / 2
-                                color: MoneroComponents.Style.inputBorderColorInActive
+                                color: MyNewCoinComponents.Style.inputBorderColorInActive
                                 width: 1
                             }
 
-                            MoneroComponents.LineEdit {
+                            MyNewCoinComponents.LineEdit {
                                 KeyNavigation.backtab: parent.children[0]
                                 KeyNavigation.tab: index + 1 < recipientRepeater.count ? recipientRepeater.itemAt(index + 1).children[1].children[0] : sendButton
                                 Layout.alignment: Qt.AlignVCenter
@@ -452,13 +452,13 @@ Rectangle {
                                 Layout.preferredWidth: 125
                                 Layout.maximumWidth: 125
                                 borderDisabled: true
-                                fontFamily: MoneroComponents.Style.fontMonoRegular.name
+                                fontFamily: MyNewCoinComponents.Style.fontMonoRegular.name
                                 fontSize: 14
                                 inputPaddingLeft: 0
                                 inputPaddingRight: 0
                                 inputPaddingTop: 0
                                 inputPaddingBottom: 0
-                                placeholderFontFamily: MoneroComponents.Style.fontMonoRegular.name
+                                placeholderFontFamily: MyNewCoinComponents.Style.fontMonoRegular.name
                                 placeholderFontSize: 14
                                 placeholderLeftMargin: 0
                                 placeholderText: "0.00"
@@ -485,7 +485,7 @@ Rectangle {
                                 }
                             }
 
-                            MoneroComponents.TextPlain {
+                            MyNewCoinComponents.TextPlain {
                                 Layout.leftMargin: recipientLayout.colSpacing / 2
                                 Layout.preferredWidth: recipientLayout.thirdRowWidth
                                 font.family: FontAwesome.fontFamilySolid
@@ -508,12 +508,12 @@ Rectangle {
                                 }
                             }
 
-                            MoneroComponents.TextPlain {
+                            MyNewCoinComponents.TextPlain {
                                 Layout.leftMargin: recipientLayout.colSpacing / 2
                                 Layout.preferredWidth: recipientLayout.thirdRowWidth
                                 horizontalAlignment: Text.AlignHCenter
-                                font.family: MoneroComponents.Style.fontRegular.name
-                                text: "XMR"
+                                font.family: MyNewCoinComponents.Style.fontRegular.name
+                                text: "MNC"
                                 visible: recipientModel.count == 1
                             }
                         }
@@ -558,16 +558,16 @@ Rectangle {
                             }
                         }
 
-                        MoneroComponents.TextPlain {
+                        MyNewCoinComponents.TextPlain {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignRight
-                            font.family: MoneroComponents.Style.fontRegular.name
+                            font.family: MyNewCoinComponents.Style.fontRegular.name
                             font.pixelSize: 16
                             text: recipientModel.count > 1 ? qsTr("Total") + translationManager.emptyString : ""
                         }
                     }
 
-                    MoneroComponents.LineEdit {
+                    MyNewCoinComponents.LineEdit {
                         id: totalValue
                         Layout.column: 1
                         Layout.row: 0
@@ -575,7 +575,7 @@ Rectangle {
                         Layout.topMargin: recipientModel.count > 1 ? 0 : -1
                         Layout.maximumWidth: recipientLayout.secondRowWidth
                         borderDisabled: true
-                        fontFamily: MoneroComponents.Style.fontMonoRegular.name
+                        fontFamily: MyNewCoinComponents.Style.fontMonoRegular.name
                         fontSize: 14
                         inputHeight: 30
                         inputPaddingLeft: 0
@@ -587,25 +587,25 @@ Rectangle {
                         visible: recipientModel.count > 1
                     }
 
-                    MoneroComponents.TextPlain {
+                    MyNewCoinComponents.TextPlain {
                         Layout.column: 2
                         Layout.row: 0
                         Layout.preferredWidth: recipientLayout.thirdRowWidth
                         Layout.maximumWidth: recipientLayout.thirdRowWidth
                         horizontalAlignment: Text.AlignHCenter
-                        font.family: MoneroComponents.Style.fontRegular.name
-                        text: "XMR"
+                        font.family: MyNewCoinComponents.Style.fontRegular.name
+                        text: "MNC"
                         visible: recipientModel.count > 1
                     }
 
-                    MoneroComponents.LineEdit {
+                    MyNewCoinComponents.LineEdit {
                         Layout.column: 1
                         Layout.row: recipientModel.count > 1 ? 1 : 0
                         Layout.preferredWidth: recipientLayout.secondRowWidth
                         Layout.topMargin: recipientModel.count > 1 ? 0 : -1
                         Layout.maximumWidth: recipientLayout.secondRowWidth
                         borderDisabled: true
-                        fontFamily: MoneroComponents.Style.fontMonoRegular.name
+                        fontFamily: MyNewCoinComponents.Style.fontMonoRegular.name
                         fontSize: 14
                         inputHeight: 30
                         inputPaddingLeft: 0
@@ -618,13 +618,13 @@ Rectangle {
                         visible: persistentSettings.fiatPriceEnabled
                     }
 
-                    MoneroComponents.TextPlain {
+                    MyNewCoinComponents.TextPlain {
                         Layout.column: 2
                         Layout.row: recipientModel.count > 1 ? 1 : 0
                         Layout.preferredWidth: recipientLayout.thirdRowWidth
                         Layout.topMargin: recipientModel.count > 1 ? 0 : -1
                         Layout.maximumWidth: recipientLayout.thirdRowWidth
-                        font.family: MoneroComponents.Style.fontRegular.name
+                        font.family: MyNewCoinComponents.Style.fontRegular.name
                         horizontalAlignment: Text.AlignHCenter
                         opacity: 0.7
                         text: fiatApiCurrencySymbol()
@@ -642,7 +642,7 @@ Rectangle {
                 anchors.right: recipientLayout.right
                 anchors.rightMargin: recipientLayout.thirdRowWidth
                 color: "transparent"
-                border.color: MoneroComponents.Style.inputBorderColorInActive
+                border.color: MyNewCoinComponents.Style.inputBorderColorInActive
                 border.width: 1
                 radius: 4
             }
@@ -683,13 +683,13 @@ Rectangle {
                     labelFontSize: 16
                 }
 
-                MoneroComponents.TextPlain {
+                MyNewCoinComponents.TextPlain {
                     id: feeLabel
                     Layout.alignment: Qt.AlignBottom
                     Layout.bottomMargin: 11
-                    font.family: MoneroComponents.Style.fontRegular.name
+                    font.family: MyNewCoinComponents.Style.fontRegular.name
                     font.pixelSize: 14
-                    color: MoneroComponents.Style.defaultFontColor
+                    color: MyNewCoinComponents.Style.defaultFontColor
                     opacity: 0.7
                     property bool estimating: false
                     property var estimatedFee: null
@@ -728,7 +728,7 @@ Rectangle {
                         if (!sendButton.enabled || estimatedFee == null) {
                             return ""
                         }
-                        return "~%1 XMR%2 %3".arg(estimatedFee)
+                        return "~%1 MNC%2 %3".arg(estimatedFee)
                             .arg(estimatedFeeFiat)
                             .arg(qsTr("fee") + translationManager.emptyString);
                     }
@@ -743,7 +743,7 @@ Rectangle {
             }
         }
 
-      MoneroComponents.WarningBox {
+      MyNewCoinComponents.WarningBox {
           text: qsTr("Description field contents match long payment ID format. \
           Please don't paste long payment ID into description field, your funds might be lost.") + translationManager.emptyString;
           visible: warningLongPidDescription
@@ -814,7 +814,7 @@ Rectangle {
           }
       }
 
-      MoneroComponents.WarningBox {
+      MyNewCoinComponents.WarningBox {
           id: paymentIdWarningBox
           text: qsTr("Long payment IDs are obsolete. \
           Long payment IDs were not encrypted on the blockchain and would harm your privacy. \
@@ -822,7 +822,7 @@ Rectangle {
           visible: paymentIdCheckbox.checked || warningLongPidDescription
       }
 
-      MoneroComponents.WarningBox {
+      MyNewCoinComponents.WarningBox {
           id: sendButtonWarningBox
           text: root.sendButtonWarning
           visible: root.sendButtonWarning !== ""
@@ -959,7 +959,7 @@ Rectangle {
                 if (appWindow.viewOnly && !pageRoot.checkInformation()) {
                     errorMessage = "<p class='orange'>" + qsTr("* To create a transaction file, please enter address and amount above") + "</p>";
                 }
-                var header = qsTr("Spend XMR from a cold (offline) wallet") + translationManager.emptyString;
+                var header = qsTr("Spend MNC from a cold (offline) wallet") + translationManager.emptyString;
                 return "<style type='text/css'>.header{ font-size: 13px; } p{line-height:20px; margin-top:0px; margin-bottom:0px; " +
                        ";} p.orange{color:#ff9323;}</style>" +
                        "<div class='header'>" + header + "</div>" +
@@ -1045,7 +1045,7 @@ Rectangle {
                 informationPopup.open();
             } else {
                 informationPopup.title = qsTr("Information") + translationManager.emptyString
-                informationPopup.text  = qsTr("Monero sent successfully") + translationManager.emptyString
+                informationPopup.text  = qsTr("MyNewCoin sent successfully") + translationManager.emptyString
                 informationPopup.icon  = StandardIcon.Information
                 informationPopup.onCloseCallback = null
                 informationPopup.open();

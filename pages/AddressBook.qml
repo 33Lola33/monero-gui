@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -31,8 +31,8 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 
-import "../components" as MoneroComponents
-import "../components/effects/" as MoneroEffects
+import "../components" as MyNewCoinComponents
+import "../components/effects/" as MyNewCoinEffects
 
 import "../js/TxUtils.js" as TxUtils
 import moneroComponents.AddressBook 1.0
@@ -70,8 +70,8 @@ Rectangle {
             Text {
                 id: titleLabel
                 Layout.fillWidth: true
-                color: MoneroComponents.Style.defaultFontColor
-                font.family: MoneroComponents.Style.fontRegular.name
+                color: MyNewCoinComponents.Style.defaultFontColor
+                font.family: MyNewCoinComponents.Style.fontRegular.name
                 font.pixelSize: 32
                 horizontalAlignment: TextInput.AlignLeft
                 wrapMode: Text.WordWrap;
@@ -83,18 +83,18 @@ Rectangle {
 
             Text {
                 Layout.fillWidth: true
-                color: MoneroComponents.Style.dimmedFontColor
-                font.family: MoneroComponents.Style.fontRegular.name
+                color: MyNewCoinComponents.Style.dimmedFontColor
+                font.family: MyNewCoinComponents.Style.fontRegular.name
                 font.pixelSize: 16
                 horizontalAlignment: TextInput.AlignLeft
                 wrapMode: Text.WordWrap;
                 leftPadding: 0
                 topPadding: 0
-                text: qsTr("This makes it easier to send or receive Monero and reduces errors when typing in addresses manually.") + translationManager.emptyString
+                text: qsTr("This makes it easier to send or receive MyNewCoin and reduces errors when typing in addresses manually.") + translationManager.emptyString
                 width: parent.width
             }
 
-            MoneroComponents.StandardButton {
+            MyNewCoinComponents.StandardButton {
                 id: addFirstEntryButton
                 Layout.topMargin: 20
                 Layout.alignment: Qt.AlignHCenter
@@ -111,13 +111,13 @@ Rectangle {
             visible: addressBookListView.count >= 1
             spacing: 0
 
-            MoneroComponents.Label {
+            MyNewCoinComponents.Label {
                 Layout.bottomMargin: 20
                 fontSize: 32
                 text: qsTr("Address book") + translationManager.emptyString
             }
 
-            MoneroComponents.StandardButton {
+            MyNewCoinComponents.StandardButton {
                 id: addAddressButton
                 Layout.bottomMargin: 8
                 Layout.alignment: Qt.AlignRight
@@ -148,7 +148,7 @@ Rectangle {
                         height: addressBookListRow.addressBookListItemHeight
                         width: parent ? parent.width : undefined
                         Layout.fillWidth: true
-                        color: itemMouseArea.containsMouse ? MoneroComponents.Style.titleBarButtonHoverColor : "transparent"
+                        color: itemMouseArea.containsMouse ? MyNewCoinComponents.Style.titleBarButtonHoverColor : "transparent"
 
                         function doSend() {
                             console.log("Sending to: ", address +" "+ paymentId);
@@ -157,16 +157,16 @@ Rectangle {
                         }
 
                         Rectangle {
-                            color: MoneroComponents.Style.appWindowBorderColor
+                            color: MyNewCoinComponents.Style.appWindowBorderColor
                             anchors.right: parent.right
                             anchors.left: parent.left
                             anchors.top: parent.top
                             height: 1
 
-                            MoneroEffects.ColorTransition {
+                            MyNewCoinEffects.ColorTransition {
                                 targetObj: parent
-                                blackColor: MoneroComponents.Style._b_appWindowBorderColor
-                                whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+                                blackColor: MyNewCoinComponents.Style._b_appWindowBorderColor
+                                whiteColor: MyNewCoinComponents.Style._w_appWindowBorderColor
                             }
                         }
 
@@ -176,9 +176,9 @@ Rectangle {
                             anchors.rightMargin: 125
                             color: "transparent"
 
-                            MoneroComponents.Label {
+                            MyNewCoinComponents.Label {
                                 id: descriptionLabel
-                                color: MoneroComponents.Style.defaultFontColor
+                                color: MyNewCoinComponents.Style.defaultFontColor
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.left: parent.left
                                 anchors.leftMargin: 6
@@ -188,15 +188,15 @@ Rectangle {
                                 textWidth: addressLabel.x - descriptionLabel.x - 1
                             }
 
-                            MoneroComponents.Label {
+                            MyNewCoinComponents.Label {
                                 id: addressLabel
-                                color: MoneroComponents.Style.defaultFontColor
+                                color: MyNewCoinComponents.Style.defaultFontColor
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.left: parent.right
                                 anchors.leftMargin: -addressLabel.width - 5
 
                                 fontSize: 16
-                                fontFamily: MoneroComponents.Style.fontMonoRegular.name;
+                                fontFamily: MyNewCoinComponents.Style.fontMonoRegular.name;
                                 text: TxUtils.addressTruncatePretty(address, mainLayout.width < 540 ? 1 : (mainLayout.width < 700 ? 2 : 3));
                             }
 
@@ -219,10 +219,10 @@ Rectangle {
                             height: 21
                             spacing: 10
 
-                            MoneroComponents.IconButton {
+                            MyNewCoinComponents.IconButton {
                                 id: sendToButton
                                 image: "qrc:///images/arrow-right-in-circle-outline-medium-white.svg"
-                                color: MoneroComponents.Style.defaultFontColor
+                                color: MyNewCoinComponents.Style.defaultFontColor
                                 opacity: isOpenGL ? 0.5 : 1
                                 fontAwesomeFallbackIcon: FontAwesome.arrowRight
                                 fontAwesomeFallbackSize: 22
@@ -236,10 +236,10 @@ Rectangle {
                                 }
                             }
 
-                            MoneroComponents.IconButton {
+                            MyNewCoinComponents.IconButton {
                                 fontAwesomeFallbackIcon: FontAwesome.searchPlus
                                 fontAwesomeFallbackSize: 22
-                                color: MoneroComponents.Style.defaultFontColor
+                                color: MyNewCoinComponents.Style.defaultFontColor
                                 fontAwesomeFallbackOpacity: 0.5
                                 Layout.preferredWidth: 23
                                 Layout.preferredHeight: 21
@@ -248,10 +248,10 @@ Rectangle {
                                 onClicked: doSearchInHistory(address)
                             }
 
-                            MoneroComponents.IconButton {
+                            MyNewCoinComponents.IconButton {
                                 id: editEntryButton
                                 image: "qrc:///images/edit.svg"
-                                color: MoneroComponents.Style.defaultFontColor
+                                color: MyNewCoinComponents.Style.defaultFontColor
                                 opacity: isOpenGL ? 0.5 : 1
                                 fontAwesomeFallbackIcon: FontAwesome.edit
                                 fontAwesomeFallbackSize: 22
@@ -266,10 +266,10 @@ Rectangle {
                                 }
                             }
 
-                            MoneroComponents.IconButton {
+                            MyNewCoinComponents.IconButton {
                                 id: copyButton
                                 image: "qrc:///images/copy.svg"
-                                color: MoneroComponents.Style.defaultFontColor
+                                color: MyNewCoinComponents.Style.defaultFontColor
                                 opacity: isOpenGL ? 0.5 : 1
                                 fontAwesomeFallbackIcon: FontAwesome.clipboard
                                 fontAwesomeFallbackSize: 22
@@ -291,14 +291,14 @@ Rectangle {
 
             Rectangle {
                 id: border2
-                color: MoneroComponents.Style.appWindowBorderColor
+                color: MyNewCoinComponents.Style.appWindowBorderColor
                 Layout.fillWidth: true
                 height: 1
 
-                MoneroEffects.ColorTransition {
+                MyNewCoinEffects.ColorTransition {
                     targetObj: border2
-                    blackColor: MoneroComponents.Style._b_appWindowBorderColor
-                    whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+                    blackColor: MyNewCoinComponents.Style._b_appWindowBorderColor
+                    whiteColor: MyNewCoinComponents.Style._w_appWindowBorderColor
                 }
             }
         }
@@ -307,13 +307,13 @@ Rectangle {
             visible: false
             spacing: 0
 
-            MoneroComponents.Label {
+            MyNewCoinComponents.Label {
                 fontSize: 32
                 wrapMode: Text.WordWrap
                 text: (root.editEntry ? qsTr("Edit entry") : qsTr("Add an address")) + translationManager.emptyString
             }
 
-            MoneroComponents.LineEditMulti {
+            MyNewCoinComponents.LineEditMulti {
                 id: addressLine
                 visible: !root.editEntry
                 Layout.topMargin: 20
@@ -343,7 +343,7 @@ Rectangle {
                 onEnterPressed: addButton.enabled ? addButton.clicked() : ""
                 onReturnPressed: addButton.enabled ? addButton.clicked() : ""
 
-                MoneroComponents.InlineButton {
+                MyNewCoinComponents.InlineButton {
                     fontFamily: FontAwesome.fontFamilySolid
                     fontStyleName: "Solid"
                     fontPixelSize: 18
@@ -366,8 +366,8 @@ Rectangle {
                     }
                 }
 
-                MoneroComponents.InlineButton {
-                    buttonColor: MoneroComponents.Style.orange
+                MyNewCoinComponents.InlineButton {
+                    buttonColor: MyNewCoinComponents.Style.orange
                     fontFamily: FontAwesome.fontFamily
                     text: FontAwesome.qrcode
                     visible : appWindow.qrScannerEnabled && !addressLine.text
@@ -378,7 +378,7 @@ Rectangle {
                 }
             }
 
-            MoneroComponents.StandardButton {
+            MyNewCoinComponents.StandardButton {
                 id: resolveButton
                 KeyNavigation.backtab: addressLine
                 KeyNavigation.tab: descriptionLine
@@ -402,7 +402,7 @@ Rectangle {
                 }
             }
 
-            MoneroComponents.LineEdit {
+            MyNewCoinComponents.LineEdit {
                 id: descriptionLine
                 KeyNavigation.backtab: resolveButton.visible ? resolveButton : addressLine
                 KeyNavigation.tab: addButton.enabled ? addButton : cancelButton
@@ -419,7 +419,7 @@ Rectangle {
                 Layout.topMargin: 20
                 Layout.alignment: Qt.AlignRight
 
-                MoneroComponents.StandardButton {
+                MyNewCoinComponents.StandardButton {
                     id: cancelButton
                     KeyNavigation.backtab: addButton
                     KeyNavigation.tab: deleteButton.visible ? deleteButton : addressLine
@@ -429,7 +429,7 @@ Rectangle {
                     onClicked: root.showAddressBook();
                 }
 
-                MoneroComponents.StandardButton {
+                MyNewCoinComponents.StandardButton {
                     id: deleteButton
                     KeyNavigation.backtab: cancelButton
                     KeyNavigation.tab: addressLine
@@ -443,7 +443,7 @@ Rectangle {
                     }
                 }
 
-                MoneroComponents.StandardButton {
+                MyNewCoinComponents.StandardButton {
                     id: addButton
                     KeyNavigation.backtab: descriptionLine
                     KeyNavigation.tab: cancelButton
@@ -532,7 +532,7 @@ Rectangle {
       oaPopup.open()
     }
 
-    MoneroComponents.StandardDialog {
+    MyNewCoinComponents.StandardDialog {
         // dynamically change onclose handler
         property var onCloseCallback
         id: oaPopup

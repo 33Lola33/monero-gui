@@ -1,11 +1,11 @@
 import QtQuick 2.9
 
-import "../components" as MoneroComponents
+import "../components" as MyNewCoinComponents
 
 TextEdit {
-    color: MoneroComponents.Style.defaultFontColor
-    font.family: MoneroComponents.Style.fontRegular.name
-    selectionColor: MoneroComponents.Style.textSelectionColor
+    color: MyNewCoinComponents.Style.defaultFontColor
+    font.family: MyNewCoinComponents.Style.fontRegular.name
+    selectionColor: MyNewCoinComponents.Style.textSelectionColor
     wrapMode: Text.Wrap
     readOnly: true
     selectByMouse: true

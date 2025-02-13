@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -91,11 +91,11 @@ QString getAccountName(){
 QString xdgMime(){
     return QString(
         "[Desktop Entry]\n"
-        "Name=Monero GUI\n"
-        "GenericName=Monero-GUI\n"
-        "X-GNOME-FullName=Monero-GUI\n"
-        "Comment=Monero GUI\n"
-        "Keywords=Monero;\n"
+        "Name=MyNewCoin GUI\n"
+        "GenericName=MyNewCoin-GUI\n"
+        "X-GNOME-FullName=MyNewCoin-GUI\n"
+        "Comment=MyNewCoin GUI\n"
+        "Keywords=MyNewCoin;\n"
         "Exec=\"%1\" %u\n"
         "Terminal=false\n"
         "Type=Application\n"

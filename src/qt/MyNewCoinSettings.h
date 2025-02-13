@@ -4,7 +4,7 @@
 ** Contact: https://www.qt.io/licensing/
 **
 ****************************************************************************/
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -47,7 +47,7 @@
 
 static const int settingsWriteDelay = 500; // ms
 
-class MoneroSettings : public QObject, public QQmlParserStatus
+class MyNewCoinSettings : public QObject, public QQmlParserStatus
 {
     Q_OBJECT
     Q_INTERFACES(QQmlParserStatus)
@@ -56,7 +56,7 @@ class MoneroSettings : public QObject, public QQmlParserStatus
     Q_PROPERTY(QString portableFolderName READ portableFolderName CONSTANT)
 
 public:
-    explicit MoneroSettings(QObject *parent = nullptr);
+    explicit MyNewCoinSettings(QObject *parent = nullptr);
 
     QString fileName() const;
     void setFileName(const QString &fileName);

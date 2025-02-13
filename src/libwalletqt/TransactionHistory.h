@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -36,7 +36,7 @@
 #include <QReadWriteLock>
 #include <QDateTime>
 
-namespace Monero {
+namespace MyNewCoin {
 struct TransactionHistory;
 }
 
@@ -72,12 +72,12 @@ public slots:
 
 
 private:
-    explicit TransactionHistory(Monero::TransactionHistory * pimpl, QObject *parent = 0);
+    explicit TransactionHistory(MyNewCoin::TransactionHistory * pimpl, QObject *parent = 0);
 
 private:
     friend class Wallet;
     mutable QReadWriteLock m_lock;
-    Monero::TransactionHistory * m_pimpl;
+    MyNewCoin::TransactionHistory * m_pimpl;
     mutable QList<TransactionInfo*> m_tinfo;
     mutable QDateTime   m_firstDateTime;
     mutable QDateTime   m_lastDateTime;

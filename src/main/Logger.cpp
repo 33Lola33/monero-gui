@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -38,7 +38,7 @@
 #include <easylogging++.h>
 #include <wallet/api/wallet2_api.h>
 
-#include "qt/MoneroSettings.h"
+#include "qt/MyNewCoinSettings.h"
 #include "qt/TailsOS.h"
 
 // default log path by OS (should be writable)
@@ -77,11 +77,11 @@ const QString getLogPath(const QString &userDefinedLogFilePath, bool portable)
 
     if (portable)
     {
-        return QDir(MoneroSettings::portableFolderName()).filePath(defaultLogName);
+        return QDir(MyNewCoinSettings::portableFolderName()).filePath(defaultLogName);
     }
 
     if(TailsOS::detect() && TailsOS::usePersistence)
-        return QDir::homePath() + "/Persistent/Monero/logs/" + defaultLogName;
+        return QDir::homePath() + "/Persistent/MyNewCoin/logs/" + defaultLogName;
     else {
         QDir appDir(osPath + "/" + appFolder);
         if(!appDir.exists())
@@ -100,11 +100,11 @@ void messageHandler(QtMsgType type, const QMessageLogContext &context, const QSt
     const std::string msg = message.toStdString();
     switch(type)
     {
-        case QtDebugMsg: Monero::Wallet::debug(cat, msg); break;
-        case QtInfoMsg: Monero::Wallet::info(cat, msg); break;
-        case QtWarningMsg: Monero::Wallet::warning(cat, msg); break;
-        case QtCriticalMsg: Monero::Wallet::error(cat, msg); break;
-        case QtFatalMsg: Monero::Wallet::error(cat, msg); break;
+        case QtDebugMsg: MyNewCoin::Wallet::debug(cat, msg); break;
+        case QtInfoMsg: MyNewCoin::Wallet::info(cat, msg); break;
+        case QtWarningMsg: MyNewCoin::Wallet::warning(cat, msg); break;
+        case QtCriticalMsg: MyNewCoin::Wallet::error(cat, msg); break;
+        case QtFatalMsg: MyNewCoin::Wallet::error(cat, msg); break;
     }
 }
 
@@ -123,7 +123,7 @@ Logger::Logger(QCoreApplication &parent, QString userDefinedLogFilePath)
 void Logger::resetLogFilePath(bool portable)
 {
     m_logFilePath = QDir::toNativeSeparators(getLogPath(m_userDefinedLogFilePath, portable));
-    Monero::Wallet::init(m_applicationFilePath.c_str(), "monero-wallet-gui", m_logFilePath.toStdString(), true);
+    MyNewCoin::Wallet::init(m_applicationFilePath.c_str(), "monero-wallet-gui", m_logFilePath.toStdString(), true);
     qWarning() << "Logging to" << m_logFilePath;
     emit logFilePathChanged();
 }

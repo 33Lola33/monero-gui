@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -30,7 +30,7 @@ import QtQml.Models 2.2
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
-import "../components" as MoneroComponents
+import "../components" as MyNewCoinComponents
 import moneroComponents.Wallet 1.0
 import moneroComponents.P2PoolManager 1.0
 import moneroComponents.DaemonManager 1.0
@@ -53,36 +53,36 @@ Rectangle {
         anchors.right: parent.right
         spacing: 20
 
-        MoneroComponents.Label {
+        MyNewCoinComponents.Label {
             id: soloTitleLabel
             fontSize: 24
             text: qsTr("Mining") + translationManager.emptyString
         }
 
-        MoneroComponents.WarningBox {
+        MyNewCoinComponents.WarningBox {
             Layout.bottomMargin: 8
             id: localDaemonWarning
             text: qsTr("Mining is only available on local daemons.") + translationManager.emptyString
             visible: persistentSettings.useRemoteNode && !persistentSettings.allowRemoteNodeMining
         }
 
-        MoneroComponents.WarningBox {
+        MyNewCoinComponents.WarningBox {
             Layout.bottomMargin: 8
             text: qsTr("Your daemon must be synchronized before you can start mining") + translationManager.emptyString
             visible: !persistentSettings.useRemoteNode && !appWindow.daemonSynced
         }
 
-        MoneroComponents.TextPlain {
+        MyNewCoinComponents.TextPlain {
             id: soloMainLabel
-            text: qsTr("Mining with your computer helps strengthen the Monero network. The more people mine, the harder it is for the network to be attacked, and every little bit helps.\n\nMining also gives you a small chance to earn some Monero. Your computer will create hashes looking for block solutions. If you find a block, you will get the associated reward. Good luck!") + "\n\n" + qsTr("P2Pool mining is a decentralized way to pool mine that pays out more frequently compared to solo mining, while also supporting the network.") + translationManager.emptyString
+            text: qsTr("Mining with your computer helps strengthen the MyNewCoin network. The more people mine, the harder it is for the network to be attacked, and every little bit helps.\n\nMining also gives you a small chance to earn some MyNewCoin. Your computer will create hashes looking for block solutions. If you find a block, you will get the associated reward. Good luck!") + "\n\n" + qsTr("P2Pool mining is a decentralized way to pool mine that pays out more frequently compared to solo mining, while also supporting the network.") + translationManager.emptyString
             wrapMode: Text.Wrap
             Layout.fillWidth: true
-            font.family: MoneroComponents.Style.fontRegular.name
+            font.family: MyNewCoinComponents.Style.fontRegular.name
             font.pixelSize: 14
-            color: MoneroComponents.Style.defaultFontColor
+            color: MyNewCoinComponents.Style.defaultFontColor
         }
 
-        MoneroComponents.WarningBox {
+        MyNewCoinComponents.WarningBox {
             id: warningLabel
             Layout.topMargin: 8
             Layout.bottomMargin: 8
@@ -106,9 +106,9 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.alignment : Qt.AlignTop | Qt.AlignLeft
 
-                MoneroComponents.Label {
+                MyNewCoinComponents.Label {
                     id: miningModeLabel
-                    color: MoneroComponents.Style.defaultFontColor
+                    color: MyNewCoinComponents.Style.defaultFontColor
                     text: qsTr("Mining mode") + translationManager.emptyString
                     fontSize: 16
                 }
@@ -118,7 +118,7 @@ Rectangle {
                 Layout.topMargin: 5
                 spacing: 10
 
-                MoneroComponents.StandardDropdown {
+                MyNewCoinComponents.StandardDropdown {
                     Layout.maximumWidth: 200
                     id: miningModeDropdown
                     visible: true
@@ -137,9 +137,9 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.alignment : Qt.AlignTop | Qt.AlignLeft
 
-                MoneroComponents.Label {
+                MyNewCoinComponents.Label {
                     id: soloMinerThreadsLabel
-                    color: MoneroComponents.Style.defaultFontColor
+                    color: MyNewCoinComponents.Style.defaultFontColor
                     text: qsTr("CPU threads") + translationManager.emptyString
                     fontSize: 16
                     wrapMode: Text.WordWrap
@@ -151,7 +151,7 @@ Rectangle {
                 spacing: 16
 
                 RowLayout {
-                    MoneroComponents.StandardButton {
+                    MyNewCoinComponents.StandardButton {
                         id: removeThreadButton
                         small: true
                         primary: false
@@ -160,10 +160,10 @@ Rectangle {
                         onClicked: threads--
                     }
 
-                    MoneroComponents.TextPlain {
+                    MyNewCoinComponents.TextPlain {
                         Layout.bottomMargin: 1
                         Layout.minimumWidth: 45
-                        color: MoneroComponents.Style.defaultFontColor
+                        color: MyNewCoinComponents.Style.defaultFontColor
                         text: threads
                         horizontalAlignment: Text.AlignHCenter
                         font.pixelSize: 16
@@ -181,7 +181,7 @@ Rectangle {
                         }
                     }
 
-                    MoneroComponents.StandardButton {
+                    MyNewCoinComponents.StandardButton {
                         id: addThreadButton
                         small: true
                         primary: false
@@ -192,7 +192,7 @@ Rectangle {
                 }
 
                 RowLayout {
-                    MoneroComponents.StandardButton {
+                    MyNewCoinComponents.StandardButton {
                         id: autoRecommendedThreadsButton
                         small: true
                         primary: false
@@ -204,7 +204,7 @@ Rectangle {
                         }
                     }
 
-                    MoneroComponents.StandardButton {
+                    MyNewCoinComponents.StandardButton {
                         id: autoSetMaxThreadsButton
                         small: true
                         primary: false
@@ -220,7 +220,7 @@ Rectangle {
                 RowLayout {
                     // Disable this option until stable
                     visible: false
-                    MoneroComponents.CheckBox {
+                    MyNewCoinComponents.CheckBox {
                         id: ignoreBattery
                         enabled: startSoloMinerButton.enabled
                         checked: !persistentSettings.miningIgnoreBattery
@@ -234,9 +234,9 @@ Rectangle {
                 Layout.alignment: Qt.AlignTop | Qt.AlignLeft
                 Layout.minimumWidth: 140
 
-                MoneroComponents.Label {
+                MyNewCoinComponents.Label {
                     id: optionsLabel
-                    color: MoneroComponents.Style.defaultFontColor
+                    color: MyNewCoinComponents.Style.defaultFontColor
                     visible: !persistentSettings.allow_p2pool_mining
                     text: qsTr("Options") + translationManager.emptyString
                     fontSize: 16
@@ -250,7 +250,7 @@ Rectangle {
                 spacing: 16
 
                 RowLayout {
-                    MoneroComponents.CheckBox {
+                    MyNewCoinComponents.CheckBox {
                         id: backgroundMining
                         visible: !persistentSettings.allow_p2pool_mining
                         enabled: startSoloMinerButton.enabled && !persistentSettings.allow_p2pool_mining
@@ -264,9 +264,9 @@ Rectangle {
             ColumnLayout {
                 Layout.alignment : Qt.AlignTop | Qt.AlignLeft
 
-                MoneroComponents.Label {
+                MyNewCoinComponents.Label {
                     id: manageSoloMinerLabel
-                    color: MoneroComponents.Style.defaultFontColor
+                    color: MyNewCoinComponents.Style.defaultFontColor
                     text: qsTr("Manage miner") + translationManager.emptyString
                     fontSize: 16
                     wrapMode: Text.Wrap
@@ -279,7 +279,7 @@ Rectangle {
                 spacing: 16
 
                 RowLayout {
-                    MoneroComponents.StandardButton {
+                    MyNewCoinComponents.StandardButton {
                         visible: true
                         id: startSoloMinerButton
                         small: true
@@ -337,7 +337,7 @@ Rectangle {
                         }
                     }
 
-                    MoneroComponents.StandardButton {
+                    MyNewCoinComponents.StandardButton {
                         visible: true
                         id: stopSoloMinerButton
                         small: true
@@ -356,9 +356,9 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.alignment : Qt.AlignTop | Qt.AlignLeft
 
-                MoneroComponents.Label {
+                MyNewCoinComponents.Label {
                     id: statusLabel
-                    color: MoneroComponents.Style.defaultFontColor
+                    color: MyNewCoinComponents.Style.defaultFontColor
                     text: qsTr("Status") + translationManager.emptyString
                     fontSize: 16
                 }
@@ -368,7 +368,7 @@ Rectangle {
                 Layout.fillWidth: true
                 spacing: 16
 
-                MoneroComponents.LineEditMulti {
+                MyNewCoinComponents.LineEditMulti {
                     id: statusText
                     Layout.minimumWidth: 300
                     text: qsTr("Not mining") + translationManager.emptyString
@@ -390,15 +390,15 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.alignment : Qt.AlignTop | Qt.AlignLeft
 
-                MoneroComponents.Label {
+                MyNewCoinComponents.Label {
                     id: chainLabel
-                    color: MoneroComponents.Style.defaultFontColor
+                    color: MyNewCoinComponents.Style.defaultFontColor
                     visible: persistentSettings.allow_p2pool_mining
                     text: qsTr("Chain") + translationManager.emptyString
                     fontSize: 16
                 }
 
-                MoneroComponents.Tooltip {
+                MyNewCoinComponents.Tooltip {
                     id: chainsHelpTooltip
                     text: qsTr("Use the mini chain if you have a low hashrate.") + translationManager.emptyString
                 }
@@ -422,7 +422,7 @@ Rectangle {
                 Layout.topMargin: 5
                 spacing: 10
 
-                MoneroComponents.StandardDropdown {
+                MyNewCoinComponents.StandardDropdown {
                     Layout.maximumWidth: 200
                     id: chainDropdown
                     visible: persistentSettings.allow_p2pool_mining
@@ -436,20 +436,20 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.alignment : Qt.AlignTop | Qt.AlignLeft
 
-                MoneroComponents.Label {
+                MyNewCoinComponents.Label {
                     id: flagsLabel
                     visible: persistentSettings.allow_p2pool_mining
-                    color: MoneroComponents.Style.defaultFontColor
+                    color: MyNewCoinComponents.Style.defaultFontColor
                     text: qsTr("Flags") + translationManager.emptyString
                     fontSize: 16
                 }
 
-                MoneroComponents.Tooltip {
+                MyNewCoinComponents.Tooltip {
                     id: flagsHelpTooltip
                     text: "
                     Usage:<br>
                         --wallet             Wallet address to mine to. Subaddresses and integrated addresses are not supported!<br>
-                        --host               IP address of your Monero node, default is 127.0.0.1<br>
+                        --host               IP address of your MyNewCoin node, default is 127.0.0.1<br>
                         --rpc-port           monerod RPC API port number, default is 18081<br>
                         --zmq-port           monerod ZMQ pub port number, default is 18083 (same port as in monerod\'s \"--zmq-pub\" command line parameter)<br>
                         --stratum            Comma-separated list of IP:port for stratum server to listen on<br>
@@ -488,7 +488,7 @@ Rectangle {
 
             ColumnLayout {
                 Layout.fillWidth: true
-                MoneroComponents.LineEditMulti {
+                MyNewCoinComponents.LineEditMulti {
                     id: p2poolFlags
                     Layout.minimumWidth: 100
                     Layout.bottomMargin: 20
@@ -572,7 +572,7 @@ Rectangle {
         errorPopup.open()
     }
 
-    MoneroComponents.StandardDialog {
+    MyNewCoinComponents.StandardDialog {
         id: errorPopup
         cancelVisible: false
     }

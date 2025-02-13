@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2024, The Monero Project
+// Copyright (c) 2021-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -30,7 +30,7 @@ import QtQuick 2.9
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.1
-import "../components" as MoneroComponents
+import "../components" as MyNewCoinComponents
 import "."
 
 ColumnLayout {
@@ -44,29 +44,29 @@ ColumnLayout {
     property alias prooveView: stateView.prooveView
     property alias state: stateView.state
 
-    MoneroComponents.Navbar {
+    MyNewCoinComponents.Navbar {
         id: navbarId
         Layout.alignment: Qt.AlignHCenter
         Layout.topMargin: height
         Layout.bottomMargin: height
 
-        MoneroComponents.NavbarItem {
+        MyNewCoinComponents.NavbarItem {
             active: state == "Mining"
             text: qsTr("Mining") + translationManager.emptyString
             onSelected: state = "Mining"
             visible: !isAndroid
         }
-        MoneroComponents.NavbarItem {
+        MyNewCoinComponents.NavbarItem {
             active: state == "Prove"
             text: qsTr("Prove/check") + translationManager.emptyString
             onSelected: state = "Prove"
         }
-        MoneroComponents.NavbarItem {
+        MyNewCoinComponents.NavbarItem {
             active: state == "SharedRingDB"
             text: qsTr("Shared RingDB") + translationManager.emptyString
             onSelected: state = "SharedRingDB"
         }
-        MoneroComponents.NavbarItem {
+        MyNewCoinComponents.NavbarItem {
             active: state == "Sign"
             text: qsTr("Sign/verify") + translationManager.emptyString
             onSelected: state = "Sign"

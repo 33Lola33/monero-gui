@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -28,8 +28,8 @@
 
 import QtQuick 2.9
 
-import "../components" as MoneroComponents
-import "../components/effects/" as MoneroEffects
+import "../components" as MyNewCoinComponents
+import "../components/effects/" as MyNewCoinEffects
 
 Label {
     id: item
@@ -42,12 +42,12 @@ Label {
         anchors.left: parent.left
         anchors.right: parent.right
         height: 2
-        color: MoneroComponents.Style.appWindowBorderColor
+        color: MyNewCoinComponents.Style.appWindowBorderColor
 
-        MoneroEffects.ColorTransition {
+        MyNewCoinEffects.ColorTransition {
             targetObj: parent
-            blackColor: MoneroComponents.Style._b_appWindowBorderColor
-            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+            blackColor: MyNewCoinComponents.Style._b_appWindowBorderColor
+            whiteColor: MyNewCoinComponents.Style._w_appWindowBorderColor
         }
     }
 }

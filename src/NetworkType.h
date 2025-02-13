@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -37,9 +37,9 @@ class NetworkType : public QObject
 
 public:
     enum Type : uint8_t {
-        MAINNET = Monero::MAINNET,
-        TESTNET = Monero::TESTNET,
-        STAGENET = Monero::STAGENET
+        MAINNET = MyNewCoin::MAINNET,
+        TESTNET = MyNewCoin::TESTNET,
+        STAGENET = MyNewCoin::STAGENET
     };
     Q_ENUM(Type)
 };

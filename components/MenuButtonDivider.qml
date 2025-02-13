@@ -1,15 +1,15 @@
 import QtQuick 2.9
 
-import "." as MoneroComponents
-import "effects/" as MoneroEffects
+import "." as MyNewCoinComponents
+import "effects/" as MyNewCoinEffects
 
 Rectangle {
-    color: MoneroComponents.Style.appWindowBorderColor
+    color: MyNewCoinComponents.Style.appWindowBorderColor
     height: 1
 
-    MoneroEffects.ColorTransition {
+    MyNewCoinEffects.ColorTransition {
         targetObj: parent
-        blackColor: MoneroComponents.Style._b_appWindowBorderColor
-        whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+        blackColor: MyNewCoinComponents.Style._b_appWindowBorderColor
+        whiteColor: MyNewCoinComponents.Style._w_appWindowBorderColor
     }
 }

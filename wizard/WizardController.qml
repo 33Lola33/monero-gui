@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -39,15 +39,15 @@ import moneroComponents.Wallet 1.0
 import "../js/Wizard.js" as Wizard
 import "../js/Windows.js" as Windows
 import "../js/Utils.js" as Utils
-import "../components" as MoneroComponents
-import "../components/effects/" as MoneroEffects
+import "../components" as MyNewCoinComponents
+import "../components/effects/" as MyNewCoinEffects
 import "../pages"
 
 Rectangle {
     id: wizardController
     anchors.fill: parent
 
-    signal useMoneroClicked()
+    signal useMyNewCoinClicked()
     signal walletCreatedFromDevice(bool success)
 
     function restart(generatingNewSeed) {
@@ -248,15 +248,15 @@ Rectangle {
             }
         ]
 
-        MoneroEffects.GradientBackground {
+        MyNewCoinEffects.GradientBackground {
             anchors.fill: parent
-            fallBackColor: MoneroComponents.Style.middlePanelBackgroundColor
-            initialStartColor: MoneroComponents.Style.wizardBackgroundGradientStart
-            initialStopColor: MoneroComponents.Style.middlePanelBackgroundGradientStop
-            blackColorStart: MoneroComponents.Style._b_wizardBackgroundGradientStart
-            blackColorStop: MoneroComponents.Style._b_middlePanelBackgroundGradientStop
-            whiteColorStart: MoneroComponents.Style._w_wizardBackgroundGradientStart
-            whiteColorStop: MoneroComponents.Style._w_middlePanelBackgroundGradientStop
+            fallBackColor: MyNewCoinComponents.Style.middlePanelBackgroundColor
+            initialStartColor: MyNewCoinComponents.Style.wizardBackgroundGradientStart
+            initialStopColor: MyNewCoinComponents.Style.middlePanelBackgroundGradientStop
+            blackColorStart: MyNewCoinComponents.Style._b_wizardBackgroundGradientStart
+            blackColorStop: MyNewCoinComponents.Style._b_middlePanelBackgroundGradientStop
+            whiteColorStart: MyNewCoinComponents.Style._w_wizardBackgroundGradientStart
+            whiteColorStop: MyNewCoinComponents.Style._w_middlePanelBackgroundGradientStop
             start: Qt.point(0, 0)
             end: Qt.point(height, width)
         }

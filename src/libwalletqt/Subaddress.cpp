@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -29,7 +29,7 @@
 #include "Subaddress.h"
 #include <QDebug>
 
-Subaddress::Subaddress(Monero::Subaddress *subaddressImpl, QObject *parent)
+Subaddress::Subaddress(MyNewCoin::Subaddress *subaddressImpl, QObject *parent)
   : QObject(parent), m_subaddressImpl(subaddressImpl)
 {
     getAll();
@@ -51,7 +51,7 @@ void Subaddress::getAll() const
     emit refreshFinished();
 }
 
-bool Subaddress::getRow(int index, std::function<void (Monero::SubaddressRow &row)> callback) const
+bool Subaddress::getRow(int index, std::function<void (MyNewCoin::SubaddressRow &row)> callback) const
 {
     QReadLocker locker(&m_lock);
 

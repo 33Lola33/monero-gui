@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -33,7 +33,7 @@ import moneroComponents.NetworkType 1.0
 
 import "../js/Wizard.js" as Wizard
 import "../js/Utils.js" as Utils
-import "../components" as MoneroComponents
+import "../components" as MyNewCoinComponents
 
 ColumnLayout {
     Layout.fillWidth: true

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -29,24 +29,24 @@
 import QtQuick.Controls 2.0
 import QtQuick 2.9
 
-import "../components" as MoneroComponents
+import "../components" as MyNewCoinComponents
 
 TextField {
     id: textField
-    font.family: MoneroComponents.Style.fontRegular.name
+    font.family: MyNewCoinComponents.Style.fontRegular.name
     font.pixelSize: 18
     font.bold: true
     horizontalAlignment: TextInput.AlignLeft
     selectByMouse: true
-    color: MoneroComponents.Style.defaultFontColor
-    selectionColor: MoneroComponents.Style.textSelectionColor
-    selectedTextColor: MoneroComponents.Style.textSelectedColor
+    color: MyNewCoinComponents.Style.defaultFontColor
+    selectionColor: MyNewCoinComponents.Style.textSelectionColor
+    selectedTextColor: MyNewCoinComponents.Style.textSelectedColor
 
     background: Rectangle {
         color: "transparent"
     }
 
-    MoneroComponents.ContextMenu {
+    MyNewCoinComponents.ContextMenu {
         cursorShape: Qt.IBeamCursor
         onCut: textField.cut();
         onCopy: textField.copy();

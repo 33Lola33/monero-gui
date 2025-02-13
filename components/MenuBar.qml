@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -27,7 +27,7 @@
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Qt.labs.platform 1.0 as PlatformLabs
-import "." as MoneroComponents
+import "." as MyNewCoinComponents
 
 PlatformLabs.MenuBar {
     PlatformLabs.Menu {
@@ -41,9 +41,9 @@ PlatformLabs.MenuBar {
     PlatformLabs.Menu {
         title: qsTr("View")
         PlatformLabs.MenuItem {
-            text: MoneroComponents.Style.blackTheme ? qsTr("Light Theme") : qsTr("Dark Theme")
+            text: MyNewCoinComponents.Style.blackTheme ? qsTr("Light Theme") : qsTr("Dark Theme")
             onTriggered: {
-                MoneroComponents.Style.blackTheme = !MoneroComponents.Style.blackTheme;
+                MyNewCoinComponents.Style.blackTheme = !MyNewCoinComponents.Style.blackTheme;
             }
         }
         PlatformLabs.MenuItem {

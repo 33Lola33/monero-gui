@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -32,7 +32,7 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0
 import moneroComponents.NetworkType 1.0
 
-import "../components" as MoneroComponents
+import "../components" as MyNewCoinComponents
 
 Rectangle {
     id: wizardHome
@@ -63,11 +63,11 @@ Rectangle {
                 WizardHeader {
                     Layout.bottomMargin: 7
                     Layout.fillWidth: true
-                    title: qsTr("Welcome to Monero") + translationManager.emptyString
+                    title: qsTr("Welcome to MyNewCoin") + translationManager.emptyString
                     subtitle: ""
                 }
 
-                MoneroComponents.LanguageButton {
+                MyNewCoinComponents.LanguageButton {
                     Layout.bottomMargin: 8
                 }
             }
@@ -79,7 +79,7 @@ Rectangle {
                                                                         : nettype === 1 ? " (" + qsTr("testnet") + ")"
                                                                                         : "") + translationManager.emptyString
                 }
-                bodyText: qsTr("Choose this option if this is your first time using Monero.") + translationManager.emptyString
+                bodyText: qsTr("Choose this option if this is your first time using MyNewCoin.") + translationManager.emptyString
                 imageIcon: "qrc:///images/create-wallet.png"
 
                 onMenuClicked: {
@@ -95,8 +95,8 @@ Rectangle {
                 Layout.topMargin: 3
                 Layout.bottomMargin: 3
                 Layout.fillWidth: true
-                color: MoneroComponents.Style.dividerColor
-                opacity: MoneroComponents.Style.dividerOpacity
+                color: MyNewCoinComponents.Style.dividerColor
+                opacity: MyNewCoinComponents.Style.dividerOpacity
             }
 
             WizardMenuItem {
@@ -106,7 +106,7 @@ Rectangle {
                                                                         : nettype === 1 ? " (" + qsTr("testnet") + ")"
                                                                                         : "") + translationManager.emptyString
                 }
-                bodyText: qsTr("Connect your hardware wallet to create a new Monero wallet.") + translationManager.emptyString
+                bodyText: qsTr("Connect your hardware wallet to create a new MyNewCoin wallet.") + translationManager.emptyString
                 imageIcon: "qrc:///images/restore-wallet-from-hardware.png"
 
                 onMenuClicked: {
@@ -120,8 +120,8 @@ Rectangle {
                 Layout.topMargin: 3
                 Layout.bottomMargin: 3
                 Layout.fillWidth: true
-                color: MoneroComponents.Style.dividerColor
-                opacity: MoneroComponents.Style.dividerOpacity
+                color: MyNewCoinComponents.Style.dividerColor
+                opacity: MyNewCoinComponents.Style.dividerOpacity
             }
 
             WizardMenuItem {
@@ -140,8 +140,8 @@ Rectangle {
                 Layout.topMargin: 3
                 Layout.bottomMargin: 3
                 Layout.fillWidth: true
-                color: MoneroComponents.Style.dividerColor
-                opacity: MoneroComponents.Style.dividerOpacity
+                color: MyNewCoinComponents.Style.dividerColor
+                opacity: MyNewCoinComponents.Style.dividerOpacity
             }
 
             WizardMenuItem {
@@ -160,7 +160,7 @@ Rectangle {
                 Layout.topMargin: 16
                 spacing: 20
 
-                MoneroComponents.StandardButton {
+                MyNewCoinComponents.StandardButton {
                     small: true
                     text: qsTr("Change wallet mode") + translationManager.emptyString
 
@@ -171,7 +171,7 @@ Rectangle {
                 }
             }
 
-            MoneroComponents.CheckBox2 {
+            MyNewCoinComponents.CheckBox2 {
                 id: showAdvancedCheckbox
                 Layout.topMargin: 30
                 Layout.fillWidth: true
@@ -195,7 +195,7 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.topMargin: 10
 
-                MoneroComponents.StandardDropdown {
+                MyNewCoinComponents.StandardDropdown {
                     id: networkTypeDropdown
                     currentIndex: persistentSettings.nettype
                     dataModel: networkTypeModel
@@ -218,7 +218,7 @@ Rectangle {
                     }
                 }
 
-                MoneroComponents.LineEdit {
+                MyNewCoinComponents.LineEdit {
                     id: kdfRoundsText
                     Layout.maximumWidth: 180
 

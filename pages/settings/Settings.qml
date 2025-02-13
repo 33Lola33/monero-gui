@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -33,7 +33,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import "../../js/Windows.js" as Windows
 import "../../js/Utils.js" as Utils
-import "../../components" as MoneroComponents
+import "../../components" as MyNewCoinComponents
 import "../../pages"
 import "."
 import moneroComponents.Clipboard 1.0
@@ -48,35 +48,35 @@ ColumnLayout {
     property int settingsHeight: 900
     property alias settingsStateViewState: settingsStateView.state
 
-    MoneroComponents.Navbar {
+    MyNewCoinComponents.Navbar {
         id: navbarId
         Layout.alignment: Qt.AlignHCenter
         Layout.topMargin: height
         Layout.bottomMargin: height
 
-        MoneroComponents.NavbarItem {
+        MyNewCoinComponents.NavbarItem {
             active: settingsStateView.state == "Wallet"
             text: qsTr("Wallet") + translationManager.emptyString
             onSelected: settingsStateView.state = "Wallet"
         }
-        MoneroComponents.NavbarItem {
+        MyNewCoinComponents.NavbarItem {
             active: settingsStateView.state == "UI"
             text: qsTr("Interface") + translationManager.emptyString
             onSelected: settingsStateView.state = "UI"
         }
-        MoneroComponents.NavbarItem {
+        MyNewCoinComponents.NavbarItem {
             active: settingsStateView.state == "Node"
             text: qsTr("Node") + translationManager.emptyString
             visible: appWindow.walletMode >= 2
             onSelected: settingsStateView.state = "Node"
         }
-        MoneroComponents.NavbarItem {
+        MyNewCoinComponents.NavbarItem {
             active: settingsStateView.state == "Log"
             text: qsTr("Log") + translationManager.emptyString
             onSelected: settingsStateView.state = "Log"
             visible: !isAndroid
         }
-        MoneroComponents.NavbarItem {
+        MyNewCoinComponents.NavbarItem {
             active: settingsStateView.state == "Info"
             text: qsTr("Info") + translationManager.emptyString
             onSelected: settingsStateView.state = "Info"

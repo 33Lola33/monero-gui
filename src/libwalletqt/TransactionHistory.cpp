@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -145,7 +145,7 @@ bool TransactionHistory::TransactionHistory::locked() const
 }
 
 
-TransactionHistory::TransactionHistory(Monero::TransactionHistory *pimpl, QObject *parent)
+TransactionHistory::TransactionHistory(MyNewCoin::TransactionHistory *pimpl, QObject *parent)
     : QObject(parent), m_pimpl(pimpl), m_minutesToUnlock(0), m_locked(false)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)

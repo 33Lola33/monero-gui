@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -38,8 +38,8 @@ import moneroComponents.Wallet 1.0
 import "./pages"
 import "./pages/settings"
 import "./pages/merchant"
-import "./components" as MoneroComponents
-import "./components/effects/" as MoneroEffects
+import "./components" as MyNewCoinComponents
+import "./components/effects/" as MyNewCoinEffects
 
 Rectangle {
     id: root
@@ -72,20 +72,20 @@ Rectangle {
     Rectangle {
         // grey background on merchantView
         visible: currentView === merchantView
-        color: MoneroComponents.Style.moneroGrey
+        color: MyNewCoinComponents.Style.moneroGrey
         anchors.fill: parent
     }
 
-    MoneroEffects.GradientBackground {
+    MyNewCoinEffects.GradientBackground {
         visible: currentView !== merchantView
         anchors.fill: parent
-        fallBackColor: MoneroComponents.Style.middlePanelBackgroundColor
-        initialStartColor: MoneroComponents.Style.middlePanelBackgroundGradientStart
-        initialStopColor: MoneroComponents.Style.middlePanelBackgroundGradientStop
-        blackColorStart: MoneroComponents.Style._b_middlePanelBackgroundGradientStart
-        blackColorStop: MoneroComponents.Style._b_middlePanelBackgroundGradientStop
-        whiteColorStart: MoneroComponents.Style._w_middlePanelBackgroundGradientStart
-        whiteColorStop: MoneroComponents.Style._w_middlePanelBackgroundGradientStop
+        fallBackColor: MyNewCoinComponents.Style.middlePanelBackgroundColor
+        initialStartColor: MyNewCoinComponents.Style.middlePanelBackgroundGradientStart
+        initialStopColor: MyNewCoinComponents.Style.middlePanelBackgroundGradientStop
+        blackColorStart: MyNewCoinComponents.Style._b_middlePanelBackgroundGradientStart
+        blackColorStop: MyNewCoinComponents.Style._b_middlePanelBackgroundGradientStop
+        whiteColorStart: MyNewCoinComponents.Style._w_middlePanelBackgroundGradientStart
+        whiteColorStop: MyNewCoinComponents.Style._w_middlePanelBackgroundGradientStop
         start: Qt.point(0, 0)
         end: Qt.point(height, width)
     }
@@ -237,12 +237,12 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         width: 1
-        color: MoneroComponents.Style.appWindowBorderColor
+        color: MyNewCoinComponents.Style.appWindowBorderColor
 
-        MoneroEffects.ColorTransition {
+        MyNewCoinEffects.ColorTransition {
             targetObj: parent
-            blackColor: MoneroComponents.Style._b_appWindowBorderColor
-            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+            blackColor: MyNewCoinComponents.Style._b_appWindowBorderColor
+            whiteColor: MyNewCoinComponents.Style._w_appWindowBorderColor
         }
     }
 

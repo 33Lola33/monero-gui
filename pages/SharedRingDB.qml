@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2024, The Monero Project
+// Copyright (c) 2018-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -32,7 +32,7 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 
-import "../components" as MoneroComponents
+import "../components" as MyNewCoinComponents
 import moneroComponents.Clipboard 1.0
 
 Rectangle {
@@ -84,53 +84,53 @@ Rectangle {
             standardButtons: StandardButton.Ok
         }
 
-        MoneroComponents.Label {
+        MyNewCoinComponents.Label {
             id: signTitleLabel
             fontSize: 24
             text: qsTr("Shared RingDB") + translationManager.emptyString
         }
 
-        MoneroComponents.TextPlain {
+        MyNewCoinComponents.TextPlain {
             text: qsTr("This page allows you to interact with the shared ring database. " +
-                       "This database is meant for use by Monero wallets as well as wallets from Monero clones which reuse the Monero keys.") + translationManager.emptyString
+                       "This database is meant for use by MyNewCoin wallets as well as wallets from MyNewCoin clones which reuse the MyNewCoin keys.") + translationManager.emptyString
             wrapMode: Text.Wrap
             Layout.fillWidth: true
-            font.family: MoneroComponents.Style.fontRegular.name
+            font.family: MyNewCoinComponents.Style.fontRegular.name
             font.pixelSize: 14
-            color: MoneroComponents.Style.defaultFontColor
+            color: MyNewCoinComponents.Style.defaultFontColor
         }
 
-        MoneroComponents.LabelSubheader {
+        MyNewCoinComponents.LabelSubheader {
             Layout.fillWidth: true
             Layout.topMargin: 24
             textFormat: Text.RichText
             text: qsTr("Rings") + translationManager.emptyString
             tooltip: qsTr(
-                    "In order to avoid nullifying the protection afforded by Monero's ring signatures, an output should not " +
+                    "In order to avoid nullifying the protection afforded by MyNewCoin's ring signatures, an output should not " +
                     "be spent with different rings on different blockchains. While this is normally not a concern, it can become one " +
-                    "when a key-reusing Monero clone allows you to spend existing outputs. In this case, you need to ensure this " +
+                    "when a key-reusing MyNewCoin clone allows you to spend existing outputs. In this case, you need to ensure this " +
                     "existing outputs uses the same ring on both chains.<br>" +
-                    "This will be done automatically by Monero and any key-reusing software which is not trying to actively strip " +
+                    "This will be done automatically by MyNewCoin and any key-reusing software which is not trying to actively strip " +
                     "you of your privacy.<br>" +
-                    "If you are using a key-reusing Monero clone too, and this clone does not include this protection, you can still " +
+                    "If you are using a key-reusing MyNewCoin clone too, and this clone does not include this protection, you can still " +
                     "ensure your transactions are protected by spending on the clone first, then manually adding the ring on this page, " +
-                    "which allows you to then spend your Monero safely.<br>" +
-                    "If you do not use a key-reusing Monero clone without these safety features, then you do not need to do anything " +
+                    "which allows you to then spend your MyNewCoin safely.<br>" +
+                    "If you do not use a key-reusing MyNewCoin clone without these safety features, then you do not need to do anything " +
                     "as it is all automated.<br>"
                 ) + translationManager.emptyString
         }
 
-        MoneroComponents.TextPlain {
+        MyNewCoinComponents.TextPlain {
             textFormat: Text.RichText
-            font.family: MoneroComponents.Style.fontRegular.name
+            font.family: MyNewCoinComponents.Style.fontRegular.name
             font.pixelSize: 14
-            text: qsTr("This records rings used by outputs spent on Monero on a key reusing chain, so that the same ring may be reused to avoid privacy issues.") + translationManager.emptyString
+            text: qsTr("This records rings used by outputs spent on MyNewCoin on a key reusing chain, so that the same ring may be reused to avoid privacy issues.") + translationManager.emptyString
             wrapMode: Text.Wrap
             Layout.fillWidth: true;
-            color: MoneroComponents.Style.defaultFontColor
+            color: MyNewCoinComponents.Style.defaultFontColor
         }
 
-        MoneroComponents.LineEdit {
+        MyNewCoinComponents.LineEdit {
             id: keyImageLine
             Layout.fillWidth: true
             fontSize: 16
@@ -149,7 +149,7 @@ Rectangle {
 
             ColumnLayout {
                 RowLayout {
-                    MoneroComponents.LineEdit {
+                    MyNewCoinComponents.LineEdit {
                         id: getRingLine
                         Layout.fillWidth: true
                         fontSize: 16
@@ -164,7 +164,7 @@ Rectangle {
                     Layout.fillWidth: true
                     Layout.topMargin: 18
 
-                    MoneroComponents.StandardButton {
+                    MyNewCoinComponents.StandardButton {
                         id: getRingButton
                         text: qsTr("Get Ring") + translationManager.emptyString
                         small: true
@@ -184,7 +184,7 @@ Rectangle {
 
             ColumnLayout {
                 RowLayout {
-                    MoneroComponents.LineEdit {
+                    MyNewCoinComponents.LineEdit {
                         id: setRingLine
                         Layout.fillWidth: true
                         fontSize: 16
@@ -200,7 +200,7 @@ Rectangle {
                     Layout.fillWidth: true
                     Layout.topMargin: 18
 
-                    MoneroComponents.StandardButton {
+                    MyNewCoinComponents.StandardButton {
                         id: setRingButton
                         text: qsTr("Set Ring") + translationManager.emptyString
                         small: true
@@ -218,7 +218,7 @@ Rectangle {
             columnSpacing: 20
             columns: 2
 
-            MoneroComponents.CheckBox {
+            MyNewCoinComponents.CheckBox {
                 id: segregatePreForkOutputs
                 checked: persistentSettings.segregatePreForkOutputs
                 text: qsTr("I intend to spend on key-reusing fork(s)") + translationManager.emptyString
@@ -230,7 +230,7 @@ Rectangle {
                 }
             }
 
-            MoneroComponents.CheckBox {
+            MyNewCoinComponents.CheckBox {
                 id: keyReuseMitigation2
                 checked: persistentSettings.keyReuseMitigation2
                 text: qsTr("I might want to spend on key-reusing fork(s)") + translationManager.emptyString
@@ -242,7 +242,7 @@ Rectangle {
                 }
             }
 
-            MoneroComponents.CheckBox {
+            MyNewCoinComponents.CheckBox {
                 id: setRingRelative
                 checked: true
                 text: qsTr("Relative") + translationManager.emptyString
@@ -256,7 +256,7 @@ Rectangle {
             columns: 2
             columnSpacing: 32
 
-            MoneroComponents.LineEdit {
+            MyNewCoinComponents.LineEdit {
                 id: segregationHeightLine
                 property bool edited: false
                 Layout.fillWidth: true

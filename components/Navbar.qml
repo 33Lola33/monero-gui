@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -28,10 +28,10 @@
 
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
-import "." as MoneroComponents
+import "." as MyNewCoinComponents
 
 Rectangle {
-    default property list<MoneroComponents.NavbarItem> items
+    default property list<MyNewCoinComponents.NavbarItem> items
     property alias currentIndex: repeater.currentIndex
     property alias previousIndex: repeater.previousIndex
 
@@ -44,12 +44,12 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         columnSpacing: 0
-        property string fontColorActive: MoneroComponents.Style.blackTheme ? "white" : "white"
-        property string fontColorInActive: MoneroComponents.Style.blackTheme ? "white" : MoneroComponents.Style.dimmedFontColor
+        property string fontColorActive: MyNewCoinComponents.Style.blackTheme ? "white" : "white"
+        property string fontColorInActive: MyNewCoinComponents.Style.blackTheme ? "white" : MyNewCoinComponents.Style.dimmedFontColor
         property int fontSize: 15
         property bool fontBold: true
-        property var fontFamily: MoneroComponents.Style.fontRegular.name
-        property string borderColor: MoneroComponents.Style.blackTheme ? "#808080" : "#B9B9B9"
+        property var fontFamily: MyNewCoinComponents.Style.fontRegular.name
+        property string borderColor: MyNewCoinComponents.Style.blackTheme ? "#808080" : "#B9B9B9"
         property int textMargin: {
             // left-right margins for a given cell
             if(appWindow.width < 890){
@@ -137,7 +137,7 @@ Rectangle {
                         implicitHeight: children[0].implicitHeight
                         implicitWidth: children[0].implicitWidth
 
-                        MoneroComponents.TextPlain {
+                        MyNewCoinComponents.TextPlain {
                             anchors.centerIn: parent
                             font.family: grid.fontFamily
                             font.pixelSize: grid.fontSize

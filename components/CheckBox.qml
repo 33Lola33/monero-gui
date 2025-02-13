@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 // 
 // All rights reserved.
 // 
@@ -30,8 +30,8 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.1
 import FontAwesome 1.0
 
-import "." as MoneroComponents
-import "effects/" as MoneroEffects
+import "." as MyNewCoinComponents
+import "effects/" as MyNewCoinEffects
 
 Item {
     id: checkBox
@@ -82,22 +82,22 @@ Item {
                 visible: checkBox.border
                 anchors.fill: parent
                 radius: 3
-                color: checkBox.enabled ? "transparent" : MoneroComponents.Style.inputBoxBackgroundDisabled
+                color: checkBox.enabled ? "transparent" : MyNewCoinComponents.Style.inputBoxBackgroundDisabled
                 border.color:
                     if (checkBox.activeFocus) {
-                        return MoneroComponents.Style.inputBorderColorActive;
+                        return MyNewCoinComponents.Style.inputBorderColorActive;
                     } else {
-                        return MoneroComponents.Style.inputBorderColorInActive;
+                        return MyNewCoinComponents.Style.inputBorderColorInActive;
                     }
             }
 
-            MoneroEffects.ImageMask {
+            MyNewCoinEffects.ImageMask {
                 id: img
                 visible: checkBox.checked || checkBox.uncheckedIcon != ""
                 anchors.centerIn: parent
                 width: checkBox.imgWidth
                 height: checkBox.imgHeight
-                color: MoneroComponents.Style.defaultFontColor
+                color: MyNewCoinComponents.Style.defaultFontColor
                 fontAwesomeFallbackIcon: checkBox.fontAwesomeIcons ? getIcon() : FontAwesome.plus
                 fontAwesomeFallbackSize: 14
                 image: checkBox.fontAwesomeIcons ? "" : getIcon()
@@ -110,11 +110,11 @@ Item {
             }
         }
 
-        MoneroComponents.TextPlain {
+        MyNewCoinComponents.TextPlain {
             id: label
-            font.family: MoneroComponents.Style.fontRegular.name
+            font.family: MyNewCoinComponents.Style.fontRegular.name
             font.pixelSize: checkBox.fontSize
-            color: MoneroComponents.Style.defaultFontColor
+            color: MyNewCoinComponents.Style.defaultFontColor
             textFormat: Text.RichText
             wrapMode: Text.NoWrap
             visible: text != ""

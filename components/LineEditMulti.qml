@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -29,7 +29,7 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.1
 
-import "../components" as MoneroComponents
+import "../components" as MyNewCoinComponents
 
 ColumnLayout {
     id: item
@@ -50,33 +50,33 @@ ColumnLayout {
     property int inputRadius: 4
 
     property bool placeholderCenter: false
-    property string placeholderFontFamily: MoneroComponents.Style.fontRegular.name
+    property string placeholderFontFamily: MyNewCoinComponents.Style.fontRegular.name
     property bool placeholderFontBold: false
     property int placeholderFontSize: 18
-    property string placeholderColor: MoneroComponents.Style.defaultFontColor
+    property string placeholderColor: MyNewCoinComponents.Style.defaultFontColor
     property real placeholderOpacity: 0.35
 
     property bool borderDisabled: false
     property string borderColor: {
         if(input.error && input.text !== ""){
-            return MoneroComponents.Style.inputBorderColorInvalid;
+            return MyNewCoinComponents.Style.inputBorderColorInvalid;
         } else if(input.activeFocus){
-            return MoneroComponents.Style.inputBorderColorActive;
+            return MyNewCoinComponents.Style.inputBorderColorActive;
         } else {
-            return MoneroComponents.Style.inputBorderColorInActive;
+            return MyNewCoinComponents.Style.inputBorderColorInActive;
         }
     }
 
     property alias error: input.error
     property alias cursorPosition: input.cursorPosition
 
-    property string labelFontColor: MoneroComponents.Style.defaultFontColor
+    property string labelFontColor: MyNewCoinComponents.Style.defaultFontColor
     property bool labelFontBold: false
     property int labelFontSize: 16
     property bool labelButtonVisible: false
 
-    property string fontColor: MoneroComponents.Style.defaultFontColor
-    property string fontFamily: MoneroComponents.Style.fontRegular.name
+    property string fontColor: MyNewCoinComponents.Style.defaultFontColor
+    property string fontFamily: MyNewCoinComponents.Style.fontRegular.name
     property bool fontBold: false
     property int fontSize: 16
 
@@ -105,11 +105,11 @@ ColumnLayout {
         height: (inputLabel.height + 10)
         visible: showingHeader ? true : false
 
-        MoneroComponents.TextPlain {
+        MyNewCoinComponents.TextPlain {
             id: inputLabel
             anchors.top: parent.top
             anchors.left: parent.left
-            font.family: MoneroComponents.Style.fontRegular.name
+            font.family: MyNewCoinComponents.Style.fontRegular.name
             font.pixelSize: item.labelFontSize
             font.bold: labelFontBold
             textFormat: Text.RichText
@@ -127,13 +127,13 @@ ColumnLayout {
             anchors.right: parent.right
             spacing: 16
 
-            MoneroComponents.LabelButton {
+            MyNewCoinComponents.LabelButton {
                 id: labelButton
                 onClicked: labelButtonClicked()
                 visible: labelButtonVisible
             }
 
-            MoneroComponents.LabelButton {
+            MyNewCoinComponents.LabelButton {
                 id: copyButtonId
                 visible: copyButton && input.text !== ""
                 text: qsTr("Copy") + translationManager.emptyString
@@ -146,7 +146,7 @@ ColumnLayout {
                 }
             }
 
-            MoneroComponents.LabelButton {
+            MyNewCoinComponents.LabelButton {
                 id: pasteButtonId
                 onClicked: {
                     input.clear();
@@ -158,7 +158,7 @@ ColumnLayout {
         }
     }
 
-    MoneroComponents.InputMulti {
+    MyNewCoinComponents.InputMulti {
         id: input
         readOnly: false
         addressValidation: false
@@ -182,7 +182,7 @@ ColumnLayout {
         Keys.onReturnPressed: item.returnPressed()
         Keys.onEnterPressed: item.enterPressed()
 
-        MoneroComponents.TextPlain {
+        MyNewCoinComponents.TextPlain {
             id: placeholderLabel
             visible: input.text ? false : true
             anchors.verticalCenter: parent.verticalCenter

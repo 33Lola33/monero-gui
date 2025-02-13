@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024, The Monero Project
+// Copyright (c) 2014-2024, The MyNewCoin Project
 //
 // All rights reserved.
 //
@@ -45,9 +45,9 @@ import moneroComponents.Settings 1.0
 import moneroComponents.P2PoolManager 1.0
 
 import "components"
-import "components" as MoneroComponents
-import "components/effects" as MoneroEffects
-import "pages/merchant" as MoneroMerchant
+import "components" as MyNewCoinComponents
+import "components/effects" as MyNewCoinEffects
+import "pages/merchant" as MyNewCoinMerchant
 import "wizard"
 import "js/Utils.js" as Utils
 import "js/Windows.js" as Windows
@@ -55,7 +55,7 @@ import "version.js" as Version
 
 ApplicationWindow {
     id: appWindow
-    title: "Monero" +
+    title: "MyNewCoin" +
         (persistentSettings.displayWalletNameInTitleBar && walletName
         ? " - " + walletName
         : "")
@@ -105,16 +105,16 @@ ApplicationWindow {
     property var fiatPriceAPIs: {
         return {
             "kraken": {
-                "xmrusd": "https://api.kraken.com/0/public/Ticker?pair=XMRUSD",
-                "xmreur": "https://api.kraken.com/0/public/Ticker?pair=XMREUR"
+                "xmrusd": "https://api.kraken.com/0/public/Ticker?pair=MNCUSD",
+                "xmreur": "https://api.kraken.com/0/public/Ticker?pair=MNCEUR"
             },
             "coingecko": {
                 "xmrusd": "https://api.coingecko.com/api/v3/simple/price?ids=monero&vs_currencies=usd",
                 "xmreur": "https://api.coingecko.com/api/v3/simple/price?ids=monero&vs_currencies=eur"
             },
             "cryptocompare": {
-                "xmrusd": "https://min-api.cryptocompare.com/data/price?fsym=XMR&tsyms=USD",
-                "xmreur": "https://min-api.cryptocompare.com/data/price?fsym=XMR&tsyms=EUR",
+                "xmrusd": "https://min-api.cryptocompare.com/data/price?fsym=MNC&tsyms=USD",
+                "xmreur": "https://min-api.cryptocompare.com/data/price?fsym=MNC&tsyms=EUR",
             }
         }
     }
@@ -415,8 +415,8 @@ ApplicationWindow {
         leftPanel.balanceString = balance
         leftPanel.balanceUnlockedString = balanceU
         if (middlePanel.state === "Account") {
-            middlePanel.accountView.balanceAllText = walletManager.displayAmount(appWindow.currentWallet.balanceAll()) + " XMR";
-            middlePanel.accountView.unlockedBalanceAllText = walletManager.displayAmount(appWindow.currentWallet.unlockedBalanceAll()) + " XMR";
+            middlePanel.accountView.balanceAllText = walletManager.displayAmount(appWindow.currentWallet.balanceAll()) + " MNC";
+            middlePanel.accountView.unlockedBalanceAllText = walletManager.displayAmount(appWindow.currentWallet.unlockedBalanceAll()) + " MNC";
         }
     }
 
@@ -1128,7 +1128,7 @@ ApplicationWindow {
             wizard.wizardState = "wizardHome";
             rootItem.state = "wizard"
             // reset balance, clear spendable funds message
-            clearMoneroCardLabelText();
+            clearMyNewCoinCardLabelText();
             leftPanel.minutesToUnlock = "";
             // reset fields
             middlePanel.addressBookView.clearFields();
@@ -1149,7 +1149,7 @@ ApplicationWindow {
     height: screenAvailableHeight > maxWindowHeight
         ? maxWindowHeight
         : Math.min(screenAvailableHeight, 700)
-    color: MoneroComponents.Style.appWindowBackgroundColor
+    color: MyNewCoinComponents.Style.appWindowBackgroundColor
     flags: persistentSettings.customDecorations ? Windows.flagsCustomDecorations : Windows.flags
 
     Timer {
@@ -1169,7 +1169,7 @@ ApplicationWindow {
                 return;
             }
 
-            var key = currency === "xmreur" ? "XXMRZEUR" : "XXMRZUSD";
+            var key = currency === "xmreur" ? "XMNCZEUR" : "XMNCZUSD";
             var ticker = resp.result[key]["c"][0];
             return ticker;
         } else if(url.startsWith("https://api.coingecko.com/api/v3/")){
@@ -1279,7 +1279,7 @@ ApplicationWindow {
         return (amount * ticker).toFixed(2);
     }
 
-    function fiatApiConvertToXMR(amount) {
+    function fiatApiConvertToMNC(amount) {
         const ticker = appWindow.fiatPrice;
         if(ticker <= 0){
             fiatApiError("Invalid ticker value: " + ticker);
@@ -1360,7 +1360,7 @@ ApplicationWindow {
                 oshelper.createDesktopEntry();
             } else if (isLinux) {
                 confirmationDialog.title = qsTr("Desktop entry") + translationManager.emptyString;
-                confirmationDialog.text  = qsTr("Would you like to register Monero GUI Desktop entry?") + translationManager.emptyString;
+                confirmationDialog.text  = qsTr("Would you like to register MyNewCoin GUI Desktop entry?") + translationManager.emptyString;
                 confirmationDialog.icon = StandardIcon.Question;
                 confirmationDialog.cancelText = qsTr("No") + translationManager.emptyString;
                 confirmationDialog.okText = qsTr("Yes") + translationManager.emptyString;
@@ -1375,11 +1375,11 @@ ApplicationWindow {
         remoteNodesModel.initialize();
     }
 
-    MoneroSettings {
+    MyNewCoinSettings {
         id: persistentSettings
         fileName: {
             if(isTails && tailsUsePersistence)
-                return homePath + "/Persistent/Monero/monero-core.conf";
+                return homePath + "/Persistent/MyNewCoin/monero-core.conf";
             return "";
         }
 
@@ -1437,7 +1437,7 @@ ApplicationWindow {
         property bool lockOnUserInActivity: true
         property int walletMode: 2
         property int lockOnUserInActivityInterval: 10  // minutes
-        property bool blackTheme: MoneroComponents.Style.blackTheme
+        property bool blackTheme: MyNewCoinComponents.Style.blackTheme
         property bool checkForUpdates: true
         property bool autosave: true
         property int autosaveMinutes: 10
@@ -1475,7 +1475,7 @@ ApplicationWindow {
         }
 
         Component.onCompleted: {
-            MoneroComponents.Style.blackTheme = persistentSettings.blackTheme
+            MyNewCoinComponents.Style.blackTheme = persistentSettings.blackTheme
         }
     }
 
@@ -1633,7 +1633,7 @@ ApplicationWindow {
         }
     }
 
-    MoneroComponents.UpdateDialog {
+    MyNewCoinComponents.UpdateDialog {
         id: updateDialog
 
         allowed: !passwordDialog.visible && !inputDialog.visible && !splash.visible
@@ -1641,7 +1641,7 @@ ApplicationWindow {
         y: (parent.height - height) / 2
     }
 
-    MoneroComponents.RemoteNodeDialog {
+    MyNewCoinComponents.RemoteNodeDialog {
         id: remoteNodeDialog
     }
 
@@ -1863,7 +1863,7 @@ ApplicationWindow {
             WizardController {
                 id: wizard
                 anchors.fill: parent
-                onUseMoneroClicked: {
+                onUseMyNewCoinClicked: {
                     rootItem.state = "normal";
                     appWindow.openWallet("wizard");
                 }
@@ -1893,11 +1893,11 @@ ApplicationWindow {
             height: 34
             width: 34
 
-            MoneroEffects.ImageMask {
+            MyNewCoinEffects.ImageMask {
                 anchors.centerIn: parent
                 visible: persistentSettings.customDecorations
                 image: "qrc:///images/resize.png"
-                color: MoneroComponents.Style.defaultFontColor
+                color: MyNewCoinComponents.Style.defaultFontColor
                 width: 12
                 height: 12
                 opacity: (parent.containsMouse || parent.pressed) ? 0.5 : 1.0
@@ -1941,7 +1941,7 @@ ApplicationWindow {
             onMinimizeClicked: appWindow.visibility = Window.Minimized
         }
 
-        MoneroMerchant.MerchantTitlebar {
+        MyNewCoinMerchant.MerchantTitlebar {
             id: titleBarOrange
             visible: persistentSettings.customDecorations && middlePanel.state === "Merchant"
             anchors.left: parent.left
@@ -1969,7 +1969,7 @@ ApplicationWindow {
                 source: "qrc:///images/tip.png"
             }
 
-            MoneroComponents.TextPlain {
+            MyNewCoinComponents.TextPlain {
                 id: content
                 anchors.horizontalCenter: parent.horizontalCenter
                 y: 6
@@ -2086,14 +2086,14 @@ ApplicationWindow {
         anchors.bottom: parent.bottom
         width: statusMessageText.contentWidth + 20
         anchors.horizontalCenter: parent.horizontalCenter
-        color: MoneroComponents.Style.blackTheme ? "black" : "white"
+        color: MyNewCoinComponents.Style.blackTheme ? "black" : "white"
         height: 40
-        MoneroComponents.TextPlain {
+        MyNewCoinComponents.TextPlain {
             id: statusMessageText
             anchors.fill: parent
             anchors.margins: 10
             font.pixelSize: 14
-            color: MoneroComponents.Style.defaultFontColor
+            color: MyNewCoinComponents.Style.defaultFontColor
             themeTransition: false
         }
     }
@@ -2228,14 +2228,14 @@ ApplicationWindow {
     }
 
     // reset label text. othewise potential privacy leak showing unlock time when switching wallets
-    function clearMoneroCardLabelText(){
+    function clearMyNewCoinCardLabelText(){
         leftPanel.balanceString = "?.??"
         leftPanel.balanceFiatString = "?.??"
     }
 
     // some fields need an extra nudge when changing languages
     function resetLanguageFields(){
-        clearMoneroCardLabelText()
+        clearMyNewCoinCardLabelText()
         if (currentWallet) {
             onWalletRefresh();
         }
@@ -2313,10 +2313,10 @@ ApplicationWindow {
         visible: blur.visible
         anchors.fill: parent
         anchors.topMargin: titleBar.height
-        color: MoneroComponents.Style.blackTheme ? "black" : "white"
+        color: MyNewCoinComponents.Style.blackTheme ? "black" : "white"
         opacity: isOpenGL ? 0.3 : inputDialog.visible || splash.visible ? 0.7 : 1.0
 
-        MoneroEffects.ColorTransition {
+        MyNewCoinEffects.ColorTransition {
             targetObj: parent
             blackColor: "black"
             whiteColor: "white"
@@ -2330,77 +2330,77 @@ ApplicationWindow {
 
     // borders on white theme + linux
     Rectangle {
-        visible: isLinux && !MoneroComponents.Style.blackTheme && middlePanel.state !== "Merchant"
+        visible: isLinux && !MyNewCoinComponents.Style.blackTheme && middlePanel.state !== "Merchant"
         z: parent.z + 1
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         width: 1
-        color: MoneroComponents.Style.appWindowBorderColor
+        color: MyNewCoinComponents.Style.appWindowBorderColor
 
-        MoneroEffects.ColorTransition {
+        MyNewCoinEffects.ColorTransition {
             targetObj: parent
-            blackColor: MoneroComponents.Style._b_appWindowBorderColor
-            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+            blackColor: MyNewCoinComponents.Style._b_appWindowBorderColor
+            whiteColor: MyNewCoinComponents.Style._w_appWindowBorderColor
         }
     }
 
     Rectangle {
-        visible: isLinux && !MoneroComponents.Style.blackTheme && middlePanel.state !== "Merchant"
+        visible: isLinux && !MyNewCoinComponents.Style.blackTheme && middlePanel.state !== "Merchant"
         z: parent.z + 1
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         width: 1
-        color: MoneroComponents.Style.appWindowBorderColor
+        color: MyNewCoinComponents.Style.appWindowBorderColor
 
-        MoneroEffects.ColorTransition {
+        MyNewCoinEffects.ColorTransition {
             targetObj: parent
-            blackColor: MoneroComponents.Style._b_appWindowBorderColor
-            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+            blackColor: MyNewCoinComponents.Style._b_appWindowBorderColor
+            whiteColor: MyNewCoinComponents.Style._w_appWindowBorderColor
         }
     }
 
     Rectangle {
-        visible: isLinux && !MoneroComponents.Style.blackTheme && middlePanel.state !== "Merchant"
+        visible: isLinux && !MyNewCoinComponents.Style.blackTheme && middlePanel.state !== "Merchant"
         z: parent.z + 1
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.left: parent.left
         height: 1
-        color: MoneroComponents.Style.appWindowBorderColor
+        color: MyNewCoinComponents.Style.appWindowBorderColor
 
-        MoneroEffects.ColorTransition {
+        MyNewCoinEffects.ColorTransition {
             targetObj: parent
-            blackColor: MoneroComponents.Style._b_appWindowBorderColor
-            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+            blackColor: MyNewCoinComponents.Style._b_appWindowBorderColor
+            whiteColor: MyNewCoinComponents.Style._w_appWindowBorderColor
         }
     }
 
     Rectangle {
-        visible: isLinux && !MoneroComponents.Style.blackTheme && middlePanel.state !== "Merchant"
+        visible: isLinux && !MyNewCoinComponents.Style.blackTheme && middlePanel.state !== "Merchant"
         z: parent.z + 1
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         height: 1
-        color: MoneroComponents.Style.appWindowBorderColor
+        color: MyNewCoinComponents.Style.appWindowBorderColor
 
-        MoneroEffects.ColorTransition {
+        MyNewCoinEffects.ColorTransition {
             targetObj: parent
-            blackColor: MoneroComponents.Style._b_appWindowBorderColor
-            whiteColor: MoneroComponents.Style._w_appWindowBorderColor
+            blackColor: MyNewCoinComponents.Style._b_appWindowBorderColor
+            whiteColor: MyNewCoinComponents.Style._w_appWindowBorderColor
         }
     }
 
-    MoneroComponents.LanguageSidebar {
+    MyNewCoinComponents.LanguageSidebar {
         id: languageSidebar
         dragMargin: 0
         onAboutToShow: previousActiveFocusItem = activeFocusItem;
         onClosed: { if (previousActiveFocusItem) previousActiveFocusItem.forceActiveFocus() }
     }
 
-    MoneroComponents.MenuBar { }
+    MyNewCoinComponents.MenuBar { }
 
     Network {
         id: network

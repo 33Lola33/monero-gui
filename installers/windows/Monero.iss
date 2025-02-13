@@ -1,18 +1,18 @@
-; Monero Fluorine Fermi GUI Wallet Installer for Windows
-; Copyright (c) 2017-2024, The Monero Project
+; MyNewCoin Fluorine Fermi GUI Wallet Installer for Windows
+; Copyright (c) 2017-2024, The MyNewCoin Project
 ; See LICENSE
 #define GuiVersion GetFileVersion("bin\monero-wallet-gui.exe")
 
 [Setup]
-AppName=Monero GUI Wallet
+AppName=MyNewCoin GUI Wallet
 ; For InnoSetup this is the property that uniquely identifies the application as such
 ; Thus it's important to keep this stable over releases
 ; With a different "AppName" InnoSetup would treat a mere update as a completely new application and thus mess up
 
 AppVersion={#GuiVersion}
 VersionInfoVersion={#GuiVersion}
-DefaultDirName={commonpf}\Monero GUI Wallet
-DefaultGroupName=Monero GUI Wallet
+DefaultDirName={commonpf}\MyNewCoin GUI Wallet
+DefaultGroupName=MyNewCoin GUI Wallet
 UninstallDisplayIcon={app}\monero-wallet-gui.exe
 PrivilegesRequired=admin
 ArchitecturesInstallIn64BitMode=x64
@@ -21,7 +21,7 @@ WizardSmallImageFile=WizardSmallImage.bmp
 WizardImageFile=WelcomeImage.bmp
 DisableWelcomePage=no
 LicenseFile=LICENSE
-AppPublisher=The Monero Developer Community
+AppPublisher=The MyNewCoin Developer Community
 AppPublisherURL=https://getmonero.org
 TimeStampsInUTC=yes
 CompressionThreads=1
@@ -32,7 +32,7 @@ UsedUserAreasWarning=no
 ;    are used by the script. Regardless of the version of Windows, if the installation is administrative then you should
 ;    be careful about making any per-user area changes: such changes may not achieve what you are intending.
 ; Background info:
-; This installer indeed asks for admin rights so the Monero files can be copied to a place where they have at least
+; This installer indeed asks for admin rights so the MyNewCoin files can be copied to a place where they have at least
 ; a minimum of protection against changes, e.g. by malware, plus it handles things for the currently logged-in user
 ; in the registry (GUI wallet per-user options) and for some of the icons. For reasons too complicated to fully explain
 ; here this does not work as intended if the installing user does not have admin rights and has to provide the password
@@ -69,30 +69,30 @@ Name: "{app}\p2pool"; Permissions: users-full
 ; copied again, even if already present with correct file date and identical content.
 ;
 ; Note that it would be very dangerous to use "ignoreversion" on files that may be shared with other
-; applications somehow. Luckily this is no issue here because ALL files are "private" to Monero.
+; applications somehow. Luckily this is no issue here because ALL files are "private" to MyNewCoin.
 
 Source: {#file AddBackslash(SourcePath) + "ReadMe.htm"}; DestDir: "{app}"; DestName: "ReadMe.htm"; Flags: ignoreversion
 Source: "FinishImage.bmp"; Flags: dontcopy
 Source: "LICENSE"; DestDir: "{app}"; Flags: ignoreversion
 
-; Monero GUI wallet exe and guide
+; MyNewCoin GUI wallet exe and guide
 Source: "bin\monero-wallet-gui.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "bin\monero-gui-wallet-guide.pdf"; DestDir: "{app}"; Flags: ignoreversion
 
-; Monero CLI wallet
+; MyNewCoin CLI wallet
 Source: "bin\extras\monero-wallet-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "bin\extras\monero-gen-trusted-multisig.exe"; DestDir: "{app}"; Flags: ignoreversion
 
-; Monero wallet RPC interface implementation
+; MyNewCoin wallet RPC interface implementation
 Source: "bin\extras\monero-wallet-rpc.exe"; DestDir: "{app}"; Flags: ignoreversion
 
-; Monero daemon
+; MyNewCoin daemon
 Source: "bin\monerod.exe"; DestDir: "{app}"; Flags: ignoreversion
 
-; Monero daemon wrapped in a batch file that stops before the text window closes, to see any error messages
+; MyNewCoin daemon wrapped in a batch file that stops before the text window closes, to see any error messages
 Source: "monero-daemon.bat"; DestDir: "{app}"; Flags: ignoreversion;
 
-; Monero blockchain utilities
+; MyNewCoin blockchain utilities
 Source: "bin\extras\monero-blockchain-export.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "bin\extras\monero-blockchain-import.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "bin\extras\monero-blockchain-mark-spent-outputs.exe"; DestDir: "{app}"; Flags: ignoreversion
@@ -206,7 +206,7 @@ begin
 
   // Additional wizard page for entering a special blockchain location
   blockChainDefaultDir := ExpandConstant('{commonappdata}\bitmonero');
-  s := 'The default folder to store the Monero blockchain is ' + blockChainDefaultDir;
+  s := 'The default folder to store the MyNewCoin blockchain is ' + blockChainDefaultDir;
   s := s + '. As this will need more than 90 GB of free space, you may want to use a folder on a different drive.';
   s := s + ' If yes, specify that folder here.';
 
@@ -223,7 +223,7 @@ begin
     blockChainDir := GetPreviousData('BlockChainDir', '');
   end;
   if blockChainDir = '' then begin
-    // Unfortunately 'TInputDirWizardDirPage' does not allow empty field, so "propose" Monero default location
+    // Unfortunately 'TInputDirWizardDirPage' does not allow empty field, so "propose" MyNewCoin default location
     blockChainDir := blockChainDefaultDir;
   end;
   BlockChainDirPage.Values[0] := blockChainDir;
@@ -301,7 +301,7 @@ begin
   if CurStep = ssPostInstall then begin
     // Re-build "monero-daemon.bat" according to actual install and blockchain directory used
     SetArrayLength(s, 3);
-    s[0] := 'REM Execute the Monero daemon and then stay with window open after it exits';
+    s[0] := 'REM Execute the MyNewCoin daemon and then stay with window open after it exits';
     s[1] := '"' + ExpandConstant('{app}\monerod.exe') + '" ' + DaemonFlags('');
     s[2] := 'PAUSE';
     SaveStringsToFile(ExpandConstant('{app}\monero-daemon.bat'), s, false); 
@@ -320,7 +320,7 @@ end;
 
 
 [Icons]
-; Icons in the "Monero GUI Wallet" program group
+; Icons in the "MyNewCoin GUI Wallet" program group
 ; Windows will almost always display icons in alphabetical order, per level, so specify the text accordingly
 Name: "{group}\GUI Wallet"; Filename: "{app}\monero-wallet-gui.exe";
 Name: "{group}\GUI Wallet Guide"; Filename: "{app}\monero-gui-wallet-guide.pdf"; IconFilename: "{app}\monero-wallet-gui.exe"
@@ -329,19 +329,19 @@ Name: "{group}\Uninstall GUI Wallet"; Filename: "{uninstallexe}"
 ; Sub-folder "Utilities";
 ; Note that Windows 10, unlike Windows 7, ignores such sub-folders completely
 ; and insists on displaying ALL icons on one single level
-Name: "{group}\Utilities\Monero Daemon"; Filename: "{app}\monerod.exe"; Parameters: {code:DaemonFlags}
+Name: "{group}\Utilities\MyNewCoin Daemon"; Filename: "{app}\monerod.exe"; Parameters: {code:DaemonFlags}
 Name: "{group}\Utilities\Read Me"; Filename: "{app}\ReadMe.htm"
 
 ; CLI wallet: Needs a working directory ("Start in:") set in the icon, because with no such directory set
 ; it tries to create new wallets without a path given in the probably non-writable program folder and will abort with an error
-Name: "{group}\Utilities\Textual (CLI) Wallet"; Filename: "{app}\monero-wallet-cli.exe"; WorkingDir: "{userdocs}\Monero\wallets"
+Name: "{group}\Utilities\Textual (CLI) Wallet"; Filename: "{app}\monero-wallet-cli.exe"; WorkingDir: "{userdocs}\MyNewCoin\wallets"
 
 ; Icons for troubleshooting problems / testing / debugging
 ; To show that they are in some way different (not for everyday use), make them visually different
 ; from the others by text, and make them sort at the end by the help of "x" in front 
 Name: "{group}\Utilities\x (Check Default Blockchain Folder)"; Filename: "{win}\Explorer.exe"; Parameters: {code:BlockChainDir}
 Name: "{group}\Utilities\x (Check Daemon Log)"; Filename: "Notepad"; Parameters: {code:DaemonLog}
-Name: "{group}\Utilities\x (Check Default Wallet Folder)"; Filename: "{win}\Explorer.exe"; Parameters: """{userdocs}\Monero\wallets"""
+Name: "{group}\Utilities\x (Check Default Wallet Folder)"; Filename: "{win}\Explorer.exe"; Parameters: """{userdocs}\MyNewCoin\wallets"""
 Name: "{group}\Utilities\x (Check GUI Wallet Log)"; Filename: "Notepad"; Parameters: """{userappdata}\monero-wallet-gui\monero-wallet-gui.log"""
 Name: "{group}\Utilities\x (Try Daemon, Exit Confirm)"; Filename: "{app}\monero-daemon.bat"
 Name: "{group}\Utilities\x (Try GUI Wallet Low Graphics Mode)"; Filename: "{app}\start-low-graphics-mode.bat"
@@ -361,14 +361,14 @@ Root: HKCU; Subkey: "Software\monero-project\monero-core"; ValueType: string; Va
 
 ; Configure a custom URI scheme: Links starting with "monero:" will start the GUI wallet exe with the URI as command-line parameter
 ; Used to easily start payments; example URI: "monero://<address>?tx_amount=5.0"
-Root: HKCR; Subkey: "monero"; ValueType: "string"; ValueData: "URL:Monero Payment Protocol"; Flags: uninsdeletekey
+Root: HKCR; Subkey: "monero"; ValueType: "string"; ValueData: "URL:MyNewCoin Payment Protocol"; Flags: uninsdeletekey
 Root: HKCR; Subkey: "monero"; ValueType: "string"; ValueName: "URL Protocol"; ValueData: ""
 Root: HKCR; Subkey: "monero\DefaultIcon"; ValueType: "string"; ValueData: "{app}\monero-wallet-gui.exe,0"
 Root: HKCR; Subkey: "monero\shell\open\command"; ValueType: "string"; ValueData: """{app}\monero-wallet-gui.exe"" ""%1"""
 
 ; Configure a custom URI scheme: Links starting with "moneroseed:" will start the GUI wallet exe with the URI as command-line parameter
 ; Used to easily hand over custom seed node info to the wallet, with an URI of the form "moneroseed://a.b.c.d:port"
-Root: HKCR; Subkey: "moneroseed"; ValueType: "string"; ValueData: "URL:Monero Seed Node Protocol"; Flags: uninsdeletekey
+Root: HKCR; Subkey: "moneroseed"; ValueType: "string"; ValueData: "URL:MyNewCoin Seed Node Protocol"; Flags: uninsdeletekey
 Root: HKCR; Subkey: "moneroseed"; ValueType: "string"; ValueName: "URL Protocol"; ValueData: ""
 Root: HKCR; Subkey: "moneroseed\DefaultIcon"; ValueType: "string"; ValueData: "{app}\monero-wallet-gui.exe,0"
 Root: HKCR; Subkey: "moneroseed\shell\open\command"; ValueType: "string"; ValueData: """{app}\monero-wallet-gui.exe"" ""%1"""

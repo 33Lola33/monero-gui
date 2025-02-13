@@ -23,7 +23,7 @@ Object {
     property string fontFamilyBrands: brands.name
     property string fontFamilySolid: solid.name
 
-    // Icons used in Monero GUI (Font Awesome version 5.15.3)
+    // Icons used in MyNewCoin GUI (Font Awesome version 5.15.3)
     // To add new icons, check unicodes in Font Awesome Free's Cheatsheet:
     // https://fontawesome.com/v5/cheatsheet/free/solid
     // https://fontawesome.com/v5/cheatsheet/free/regular

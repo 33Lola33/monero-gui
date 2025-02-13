@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-    <id>org.getmonero.Monero</id>
+    <id>org.getmonero.MyNewCoin</id>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>BSD-3-Clause</project_license>
     <content_rating type="oars-1.1"/>
-    <developer_name>The Monero Project</developer_name>
+    <developer_name>The MyNewCoin Project</developer_name>
     <categories>
         <category>Network</category>
         <category>Qt</category>
         <category>Finance</category>
         <category>Office</category>
     </categories>
-    <name>Monero GUI</name>
-    <summary>Monero: the secure, private, untraceable cryptocurrency</summary>
+    <name>MyNewCoin GUI</name>
+    <summary>MyNewCoin: the secure, private, untraceable cryptocurrency</summary>
     
     <description>
-        <p>Monero is a private, secure, untraceable, decentralised digital currency. You
+        <p>MyNewCoin is a private, secure, untraceable, decentralised digital currency. You
             are your bank, you control your funds, and nobody can trace your transfers
             unless you allow them to do so.</p>
 
-        <p>Privacy: Monero uses a cryptographically sound system to allow you to send
+        <p>Privacy: MyNewCoin uses a cryptographically sound system to allow you to send
             and receive funds without your transactions being easily revealed on the
             blockchain (the ledger of transactions that everyone has). This ensures that
             your purchases, receipts, and all transfers remain absolutely private by
@@ -32,16 +32,16 @@
             to ensure they are useless if stolen.</p>
 
         <p>Untraceability: By taking advantage of ring signatures, a special property of
-            a certain type of cryptography, Monero is able to ensure that transactions are
+            a certain type of cryptography, MyNewCoin is able to ensure that transactions are
             not only untraceable, but have an optional measure of ambiguity that ensures
             that transactions cannot easily be tied back to an individual user or computer.</p>
     </description>
 
-    <launchable type="desktop-id">org.getmonero.Monero.desktop</launchable>
+    <launchable type="desktop-id">org.getmonero.MyNewCoin.desktop</launchable>
 
     <screenshots>
         <screenshot type="default">
-            <caption>A screenshot of the Monero GUI wallet</caption>
+            <caption>A screenshot of the MyNewCoin GUI wallet</caption>
             <image>https://raw.githubusercontent.com/monero-project/monero-site/master/img/downloads/gui.png</image>
         </screenshot>
     </screenshots>
@@ -60,6 +60,6 @@
     </releases>
 
     <custom>
-      <value key="flathub::manifest">https://github.com/monero-project/monero-gui/tree/master/share/org.getmonero.Monero.yaml</value>
+      <value key="flathub::manifest">https://github.com/monero-project/monero-gui/tree/master/share/org.getmonero.MyNewCoin.yaml</value>
     </custom>
 </component>
